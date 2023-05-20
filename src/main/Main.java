@@ -15,7 +15,7 @@ public class Main {
         frame.setTitle("2D Adventure");
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
+        gamepanel.setupGame();
         gamepanel.startGameThread();
     }
 }
