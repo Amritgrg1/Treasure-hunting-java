@@ -33,6 +33,7 @@ public class Gamepanel extends JPanel implements Runnable {
     public AssetSetter aSetter = new AssetSetter(this);
     KeyHandler keyH = new KeyHandler();
 
+    Sound sound = new Sound();
     public Player player = new Player(this,keyH);
     TileManager tileM = new TileManager(this);
 
@@ -43,8 +44,10 @@ public class Gamepanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
-    public void setupGame(){
+    public void setupGame() {
         aSetter.setObject();
+
+        platMusic(0);
     }
 
     public void startGameThread(){
@@ -102,5 +105,21 @@ public class Gamepanel extends JPanel implements Runnable {
         player.draw(g2);
 
         g2.dispose();
+    }
+
+    //Sound parts
+    public void platMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic() {
+        sound.stop();
+    }
+
+    public void playSE(int i) {
+        sound.setFile(i);
+        sound.play();
     }
 }
