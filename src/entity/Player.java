@@ -129,6 +129,12 @@ public class Player extends Entity{
                         gp.Obj[i] = null;
                     }
                     break;
+
+            //changes on player speed after obtaining boots
+                case "Boots":
+                    speed +=1;
+                    gp.Obj[i] = null;
+                    break;
             }
         }
     }
