@@ -2,19 +2,18 @@ package entity;
 
 import main.Gamepanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 public class Player extends Entity{
     Gamepanel gp;
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(Gamepanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -41,19 +40,30 @@ public class Player extends Entity{
          direction = "down";
     }
     public void getPlayerImage(){
-        try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
-        }catch (IOException e)
-        {
-            e.printStackTrace();
+
+        up1 = setup("boy_up_1");
+        up2 = setup("boy_up_2");
+        down1 = setup("boy_down_1");
+        down2 = setup("boy_down_2");
+        left1 = setup("boy_left_1");
+        left2 = setup("boy_left_2");
+        right1 = setup("boy_right_1");
+        right2 = setup("boy_right_2");
+
+    }
+
+    public BufferedImage setup(String imageName){
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/player/"+ imageName +".png"));
+            image = uTool.scaleImage(image,gp.titleSize,gp.titleSize);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+        return image;
     }
     public void update(){
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true)
@@ -116,21 +126,29 @@ public class Player extends Entity{
                     gp.playSE(1);
                     hasKey++;
                     gp.Obj[i] = null;
-                    System.out.println("Key:"+hasKey);
+                    gp.ui.showMessage("You got a key!!");
                     break;
                 case "Door":
                     if(hasKey > 0){
                         gp.playSE(3);
                         gp.Obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("You opened the door!!");
+                    }
+                    else{
+                        gp.ui.showMessage("You need a key!!");
                     }
                     System.out.println("Key:"+hasKey);
                     break;
                 case "Chest":
-                    if (hasKey > 0){
-                        gp.playSE(4);
-                        gp.Obj[i] = null;
-                    }
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
+                    gp.ui.showMessage("You opened a chest!!");
+//                    if (hasKey > 0){
+//                        gp.playSE(4);
+//                        gp.Obj[i] = null;
+//                    }
                     break;
 
             //changes on player speed after obtaining boots
@@ -138,6 +156,7 @@ public class Player extends Entity{
                     gp.playSE(2);
                     speed +=1;
                     gp.Obj[i] = null;
+                    gp.ui.showMessage("Speed UP!!");
                     break;
             }
         }
@@ -185,6 +204,6 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image,screenX,screenY,gp.titleSize,gp.titleSize,null);
+        g2.drawImage(image,screenX,screenY,null);
     }
 }
