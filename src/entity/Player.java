@@ -13,7 +13,8 @@ public class Player extends Entity{
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    public int hasKey = 0;
+    int standCounter = 0;
+//    public int hasKey = 0;
 
     public Player(Gamepanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -120,45 +121,7 @@ public class Player extends Entity{
     public void pickUpObject(int i){
         if (i != 999)
         {
-            String ObjectName = gp.Obj[i].name;
-            switch (ObjectName){
-                case "Key":
-                    gp.playSE(1);
-                    hasKey++;
-                    gp.Obj[i] = null;
-                    gp.ui.showMessage("You got a key!!");
-                    break;
-                case "Door":
-                    if(hasKey > 0){
-                        gp.playSE(3);
-                        gp.Obj[i] = null;
-                        hasKey--;
-                        gp.ui.showMessage("You opened the door!!");
-                    }
-                    else{
-                        gp.ui.showMessage("You need a key!!");
-                    }
-                    System.out.println("Key:"+hasKey);
-                    break;
-                case "Chest":
-                    gp.ui.gameFinished = true;
-                    gp.stopMusic();
-                    gp.playSE(4);
-                    gp.ui.showMessage("You opened a chest!!");
-//                    if (hasKey > 0){
-//                        gp.playSE(4);
-//                        gp.Obj[i] = null;
-//                    }
-                    break;
 
-            //changes on player speed after obtaining boots
-                case "Boots":
-                    gp.playSE(2);
-                    speed +=1;
-                    gp.Obj[i] = null;
-                    gp.ui.showMessage("Speed UP!!");
-                    break;
-            }
         }
     }
     public void draw(Graphics2D g2){
