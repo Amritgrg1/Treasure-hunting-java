@@ -7,14 +7,13 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Player extends Entity{
     Gamepanel gp;
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(Gamepanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -116,21 +115,29 @@ public class Player extends Entity{
                     gp.playSE(1);
                     hasKey++;
                     gp.Obj[i] = null;
-                    System.out.println("Key:"+hasKey);
+                    gp.ui.showMessage("You got a key!!");
                     break;
                 case "Door":
                     if(hasKey > 0){
                         gp.playSE(3);
                         gp.Obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("You opened the door!!");
+                    }
+                    else{
+                        gp.ui.showMessage("You need a key!!");
                     }
                     System.out.println("Key:"+hasKey);
                     break;
                 case "Chest":
-                    if (hasKey > 0){
-                        gp.playSE(4);
-                        gp.Obj[i] = null;
-                    }
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
+                    gp.ui.showMessage("You opened a chest!!");
+//                    if (hasKey > 0){
+//                        gp.playSE(4);
+//                        gp.Obj[i] = null;
+//                    }
                     break;
 
             //changes on player speed after obtaining boots
@@ -138,6 +145,7 @@ public class Player extends Entity{
                     gp.playSE(2);
                     speed +=1;
                     gp.Obj[i] = null;
+                    gp.ui.showMessage("Speed UP!!");
                     break;
             }
         }
