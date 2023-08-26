@@ -69,7 +69,7 @@ public class UI {
         else {
             g2.setFont(arial_40);
             g2.setColor(Color.white);
-            g2.drawImage(keyImage, gp.titleSize/2, gp.titleSize/2, gp.titleSize, gp.titleSize, null);
+            g2.drawImage(keyImage, gp.titleSize/2, gp.titleSize/2, gp.titleSize, gp.titleSize, null); //Key ko image aaunu parne aayena video 10 check garne
             g2.drawString("x "+ gp.player.hasKey, 74, 65);
 
             //Time
