@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
+import static java.awt.Font.createFont;
+
 public class UI {
     Gamepanel gp;
     Graphics2D g2;
     Font maruMonica, purisaB;
     public boolean messageOn = false;
     public String message = "";
-    int messageCounter =0;
+    int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
 
@@ -22,9 +24,9 @@ public class UI {
 
         try {
             InputStream is = getClass().getResourceAsStream("/fony/x12y16pxMaruMonica.ttf");
-            maruMonica = Font.createFont(Font.TRUETYPE_FONT,is);
+            maruMonica = createFont(Font.TRUETYPE_FONT,is);
             is = getClass().getResourceAsStream("/font/Purisa Bold.ttf");
-            purisaB = Font.createFont(Font.TRUETYPE_FONT, is);
+            purisaB = createFont(Font.TRUETYPE_FONT, is);
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -45,6 +47,12 @@ public class UI {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
 
+        //Title state
+        if (gp.gameState == gp.titleState) {
+            drawTitleScreen();
+        }
+
+        //Play state
         if (gp.gameState == gp.playState){
             //later
         }
@@ -56,6 +64,49 @@ public class UI {
         if(gp.gameState == gp.dialogueState){
             drawDialogueScreen();
         }
+
+    }
+
+    public void drawTitleScreen() {
+
+        g2.setColor(new Color(0,0,0));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        //Title name
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,56F));
+        String text = "Blue Boy Adventure";
+        int x = getXforCenteredText(text);
+        int y = gp.titleSize*3;
+
+        //Shadow
+        g2.setColor(Color.gray);
+        g2.drawString(text, x+5, y+5);
+
+        //Main color
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+
+        //Blue boy image
+        x = gp.screenWidth/2 - (gp.titleSize*2)/2;
+        y += gp.titleSize*2;
+        g2.drawImage(gp.player.down1, x, y, gp.titleSize*2, gp.titleSize*2, null);
+
+        //Menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+
+        text = "NEW GAME";
+        x = getXforCenteredText(text);
+        y += gp.titleSize*4;
+        g2.drawString(text, x, y);
+
+        text = "LOAD GAME";
+        x = getXforCenteredText(text);
+        y += gp.titleSize;
+        g2.drawString(text, x, y);
+
+        text = "QUIT GAME";
+        x = getXforCenteredText(text);
+        y += gp.titleSize;
+        g2.drawString(text, x, y);
 
     }
     public void drawPauseScreen(){
@@ -75,7 +126,7 @@ public class UI {
 
         drawSubWindow(x, y, width, height);
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
         x += gp.titleSize;
         y += gp.titleSize;
 
