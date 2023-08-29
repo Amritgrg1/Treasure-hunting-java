@@ -23,7 +23,7 @@ public class UI {
         this.gp = gp;
 
         try {
-            InputStream is = getClass().getResourceAsStream("/fony/x12y16pxMaruMonica.ttf");
+            InputStream is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
             maruMonica = createFont(Font.TRUETYPE_FONT,is);
             is = getClass().getResourceAsStream("/font/Purisa Bold.ttf");
             purisaB = createFont(Font.TRUETYPE_FONT, is);
