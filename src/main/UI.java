@@ -1,7 +1,11 @@
 package main;
 
 
+import object.Obj_Heart;
+import object.SuperObject;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -12,6 +16,7 @@ public class UI {
     Gamepanel gp;
     Graphics2D g2;
     Font maruMonica, purisaB;
+    BufferedImage heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -34,6 +39,11 @@ public class UI {
             e.printStackTrace();
         }
 
+        //Create hud object
+        SuperObject heart = new Obj_Heart(gp);
+        heart_full =heart.image;
+        heart_half =heart.image2;
+        heart_blank =heart.image3;
     }
     public void showMessage(String text){
         message = text;
@@ -55,15 +65,48 @@ public class UI {
 
         //Play state
         if (gp.gameState == gp.playState){
-            //later
+            drawPlayerlife();
         }
         // PAUSE STATE
         if(gp.gameState == gp.pauseState){
+//            drawPlayerlife();  hiding while game is paused
             drawPauseScreen();
         }
         // DIALOGUE STATE
         if(gp.gameState == gp.dialogueState){
+            drawPlayerlife();
             drawDialogueScreen();
+        }
+
+    }
+
+    public void drawPlayerlife() {
+
+        int x = gp.titleSize/2;
+        int y = gp.titleSize/2;
+        int i = 0;
+
+        //Draw Max heart
+        while(i < gp.player.maxLife/2) {
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gp.titleSize;
+        }
+
+        // Reset
+        x = gp.titleSize/2;
+        y = gp.titleSize/2;
+        i = 0;
+
+        //Draw Current life
+        while (i < gp.player.life) {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if (i < gp.player.life) {
+                g2.drawImage(heart_full, x, y, null);
+            }
+            i++;
+            x += gp.titleSize;
         }
 
     }
