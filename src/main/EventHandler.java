@@ -44,10 +44,11 @@ public class EventHandler {
              canTouchEvent = true;
          }
 
-
-//         if (hit(27, 16, "right") == true) {damagePit(gp.dialogueState);}
-         if (hit(27, 16, "right") == true) {damagePit(27,16, gp.dialogueState);}
-         if(hit(23,12,"up") == true) {healingPool(23, 12, gp.dialogueState);}
+        if(canTouchEvent == true){
+            if (hit(27, 16, "right") == true) {damagePit(27, 16, gp.dialogueState);}
+            if (hit(10, 12, "any") == true) {teleport(10,12, gp.dialogueState);}
+            if(hit(23,12,"up") == true) {healingPool(23, 12, gp.dialogueState);}
+        }
      }
      public boolean hit(int col, int row, String reqDirection) {
          boolean hit = false;
@@ -85,6 +86,7 @@ public class EventHandler {
          gp.ui.currentDialogue = "You fall into a pit!";
          gp.player.life -= 1;
 //         eventRect[col][row].eventDone = true;
+         canTouchEvent = false;
      }
      public void healingPool (int col, int row,int gameState) {
          if(gp.keyH.enterPressed == true) {
