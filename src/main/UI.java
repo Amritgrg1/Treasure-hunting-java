@@ -36,7 +36,7 @@ public class UI {
             e.printStackTrace();
         }
 
-        //Create hud object
+        //Create HUD Object
         Entity heart = new Obj_Heart(gp);
         heart_full =heart.image;
         heart_half =heart.image2;
