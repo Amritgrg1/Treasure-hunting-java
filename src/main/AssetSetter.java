@@ -1,6 +1,7 @@
 package main;
 
 import entity.NPC_OldMan;
+import monster.MON_GreenSlime;
 import object.Obj_Door;
 
 public class AssetSetter {
@@ -11,33 +12,32 @@ public class AssetSetter {
 
     //Obejct set
     public void setObject(){
-        gp.Obj[0] = new Obj_Door(gp);
-        gp.Obj[0].WorldX = gp.titleSize*21;
-        gp.Obj[0].WorldY = gp.titleSize*22;
 
-        gp.Obj[1] = new Obj_Door(gp);
-        gp.Obj[1].WorldX = gp.titleSize*23;
-        gp.Obj[1].WorldY = gp.titleSize*25;
     }
     public void setNPC() {
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].WorldX = gp.titleSize*21;
         gp.npc[0].WorldY = gp.titleSize*21;
 
-        gp.npc[1] = new NPC_OldMan(gp);
-        gp.npc[1].WorldX = gp.titleSize*11;
-        gp.npc[1].WorldY = gp.titleSize*21;
+//        gp.npc[0] = new NPC_OldMan(gp);
+//        gp.npc[0].WorldX = gp.titleSize*9;
+//        gp.npc[0].WorldY = gp.titleSize*10;
+    }
+    public void setMonster() {
+        gp.monster[0] = new MON_GreenSlime(gp);
+        gp.monster[0].WorldX = gp.titleSize*23;
+        gp.monster[0].WorldY = gp.titleSize*36;
 
-        gp.npc[2] = new NPC_OldMan(gp);
-        gp.npc[2].WorldX = gp.titleSize*31;
-        gp.npc[2].WorldY = gp.titleSize*21;
+        gp.monster[1] = new MON_GreenSlime(gp);
+        gp.monster[1].WorldX = gp.titleSize*23;
+        gp.monster[1].WorldY = gp.titleSize*37;
 
-        gp.npc[3] = new NPC_OldMan(gp);
-        gp.npc[3].WorldX = gp.titleSize*21;
-        gp.npc[3].WorldY = gp.titleSize*11;
-
-        gp.npc[4] = new NPC_OldMan(gp);
-        gp.npc[4].WorldX = gp.titleSize*21;
-        gp.npc[4].WorldY = gp.titleSize*31;
+//        gp.monster[0] = new MON_GreenSlime(gp);
+//        gp.monster[0].WorldX = gp.titleSize*11;
+//        gp.monster[0].WorldY = gp.titleSize*10;
+//
+//        gp.monster[1] = new MON_GreenSlime(gp);
+//        gp.monster[1].WorldX = gp.titleSize*11;
+//        gp.monster[1].WorldY = gp.titleSize*11;
     }
 }
