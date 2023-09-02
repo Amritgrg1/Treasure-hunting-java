@@ -70,8 +70,8 @@ public class CollisionChecker {
                 entity.solidArea.y = entity.WorldY + entity.solidArea.y;
 
                 // Get the object's solid area position
-                gp.Obj[i].solidArea.x = gp.Obj[i].worldX + gp.Obj[i].solidArea.x;
-                gp.Obj[i].solidArea.y = gp.Obj[i].worldY + gp.Obj[i].solidArea.y;
+                gp.Obj[i].solidArea.x = gp.Obj[i].WorldX + gp.Obj[i].solidArea.x;
+                gp.Obj[i].solidArea.y = gp.Obj[i].WorldY + gp.Obj[i].solidArea.y;
                 switch (entity.direction)
                 {
                     case "up":

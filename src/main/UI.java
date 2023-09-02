@@ -1,15 +1,12 @@
 package main;
 
 
+import entity.Entity;
 import object.Obj_Heart;
-import object.SuperObject;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DecimalFormat;
-
 import static java.awt.Font.createFont;
 
 public class UI {
@@ -40,7 +37,7 @@ public class UI {
         }
 
         //Create hud object
-        SuperObject heart = new Obj_Heart(gp);
+        Entity heart = new Obj_Heart(gp);
         heart_full =heart.image;
         heart_half =heart.image2;
         heart_blank =heart.image3;
