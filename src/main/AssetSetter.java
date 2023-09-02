@@ -9,6 +9,7 @@ public class AssetSetter {
         this.gp = gp;
     }
 
+    //Obejct set
     public void setObject(){
         gp.Obj[0] = new Obj_Door(gp);
         gp.Obj[0].WorldX = gp.titleSize*21;
