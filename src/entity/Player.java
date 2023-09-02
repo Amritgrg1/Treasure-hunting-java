@@ -57,7 +57,7 @@ public class Player extends Entity{
         right2 = setup("/player/boy_right_2");
     }
     public void update(){
-        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true)
+        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
         {
             if(keyH.upPressed == true){
                 direction = "up";
@@ -92,8 +92,10 @@ public class Player extends Entity{
             gp.eHandler.checkEvent();
 
 
+
+
             //if collision is false, player can move
-            if(collisionOn == false){
+            if(collisionOn == false && keyH.enterPressed == false){
                 switch (direction){
                     case "up":
                         WorldY -=speed;
@@ -109,6 +111,8 @@ public class Player extends Entity{
                         break;
                 }
             }
+
+            gp.keyH.enterPressed = false;
 
             spriteCounter++;
             if(spriteCounter > 12){
