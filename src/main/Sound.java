@@ -27,6 +27,7 @@ public class Sound {
         }
     }
 
+    // Sounds
     public void play() {
         clip.start();
     }
