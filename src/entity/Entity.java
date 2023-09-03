@@ -15,6 +15,7 @@ public class Entity {
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     public BufferedImage image, image2, image3;
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collision = false;
     String dialogues[] = new String[20];
@@ -119,6 +120,14 @@ public class Entity {
             }
             spriteCounter = 0;
         }
+
+        if(invincible == true) {
+            invincibleCounter++;
+            if(invincibleCounter > 40) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
     public void draw(Graphics2D g2) {
 
@@ -132,42 +141,29 @@ public class Entity {
                 WorldY - gp.titleSize < gp.player.WorldY + gp.player.screenY) {
             switch (direction) {
                 case "up":
-                    if (spriteNum == 1) {
-                        image = up1;
-                    }
-                    if (spriteNum == 2) {
-                        image = up2;
-                    }
+                    if (spriteNum == 1) {image = up1;}
+                    if (spriteNum == 2) {image = up2;}
                     break;
                 case "down":
-                    if (spriteNum == 1) {
-                        image = down1;
-                    }
-                    if (spriteNum == 2) {
-                        image = down2;
-                    }
-
+                    if (spriteNum == 1) {image = down1;}
+                    if (spriteNum == 2) {image = down2;}
                     break;
                 case "left":
-                    if (spriteNum == 1) {
-                        image = left1;
-                    }
-                    if (spriteNum == 2) {
-                        image = left2;
-                    }
-
+                    if (spriteNum == 1) {image = left1;}
+                    if (spriteNum == 2) {image = left2;}
                     break;
                 case "right":
-                    if (spriteNum == 1) {
-                        image = right1;
-                    }
-                    if (spriteNum == 2) {
-                        image = right2;
-                    }
-
+                    if (spriteNum == 1) {image = right1;}
+                    if (spriteNum == 2) {image = right2;}
                     break;
             }
+
+            if(invincible == true) {
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.4f));
+            }
             g2.drawImage(image, screenX, screenY, gp.titleSize, gp.titleSize, null);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
+
         }
     }
     public BufferedImage setup(String imagePath, int width, int height){
