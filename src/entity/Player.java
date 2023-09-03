@@ -203,7 +203,9 @@ public class Player extends Entity{
 
     public void draw(Graphics2D g2){
         BufferedImage image = null;
-        
+        int tempScreenX = screenX;
+        int tempScreenY = screenY;
+
         switch (direction){
             case "up":
                 if (attacking == false){
@@ -211,6 +213,7 @@ public class Player extends Entity{
                     if (spriteNum == 2){image = up2;}
                 }
                 if (attacking == true){
+                    tempScreenY = screenY - gp.titleSize;
                     if (spriteNum == 1){image = attackUp1;}
                     if (spriteNum == 2){image = attackUp2;}
                 }
@@ -232,6 +235,7 @@ public class Player extends Entity{
                     if (spriteNum == 2){image = left2;}
                 }
                 if (attacking == true){
+                    tempScreenX = screenX - gp.titleSize;
                     if (spriteNum == 1){image = attackLeft1;}
                     if (spriteNum == 2){image = attackLeft2;}
                 }
@@ -253,7 +257,7 @@ public class Player extends Entity{
         if(invincible == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.3f));
         }
-        g2.drawImage(image,screenX,screenY,null);
+        g2.drawImage(image, tempScreenX, tempScreenY,null);
 
         // Reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
