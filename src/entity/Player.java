@@ -32,6 +32,7 @@ public class Player extends Entity{
 
         setDefaultValues();
         getPlayerImage();
+        getPlayerAttackImage();
     }
     public void setDefaultValues(){
          WorldX = gp.titleSize * 23;
@@ -47,17 +48,32 @@ public class Player extends Entity{
     }
     public void getPlayerImage(){
 
-        up1 = setup("/player/boy_up_1");
-        up2 = setup("/player/boy_up_2");
-        down1 = setup("/player/boy_down_1");
-        down2 = setup("/player/boy_down_2");
-        left1 = setup("/player/boy_left_1");
-        left2 = setup("/player/boy_left_2");
-        right1 = setup("/player/boy_right_1");
-        right2 = setup("/player/boy_right_2");
+        up1 = setup("/player/boy_up_1", gp.titleSize, gp.titleSize);
+        up2 = setup("/player/boy_up_2", gp.titleSize, gp.titleSize);
+        down1 = setup("/player/boy_down_1", gp.titleSize, gp.titleSize);
+        down2 = setup("/player/boy_down_2", gp.titleSize, gp.titleSize);
+        left1 = setup("/player/boy_left_1", gp.titleSize, gp.titleSize);
+        left2 = setup("/player/boy_left_2", gp.titleSize, gp.titleSize);
+        right1 = setup("/player/boy_right_1", gp.titleSize, gp.titleSize);
+        right2 = setup("/player/boy_right_2", gp.titleSize, gp.titleSize);
     }
+
+    public void getPlayerAttackImage(){
+        attackUp1 = setup("/player/boy_attack_up_1", gp.titleSize, gp.titleSize*2);
+        attackUp2 = setup("/player/boy_attack_up_2", gp.titleSize, gp.titleSize*2);
+        attackDown1 = setup("/player/boy_attack_down_1", gp.titleSize, gp.titleSize*2);
+        attackDown2 = setup("/player/boy_attack_down_2", gp.titleSize, gp.titleSize*2);
+        attackLeft1 = setup("/player/boy_attack_left_1", gp.titleSize*2, gp.titleSize);
+        attackLeft2 = setup("/player/boy_attack_left_2", gp.titleSize*2, gp.titleSize);
+        attackRight1 = setup("/player/boy_attack_right_1", gp.titleSize*2, gp.titleSize);
+        attackRight2 = setup("/player/boy_attack_right_2", gp.titleSize*2, gp.titleSize);
+    }
+
     public void update(){
-        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
+        if (attacking == true){
+            attacking();
+        }
+        else if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
         {
             if(keyH.upPressed == true){
                 direction = "up";
@@ -141,6 +157,21 @@ public class Player extends Entity{
             }
         }
     }
+    public void attacking(){
+        spriteCounter++;
+        if(spriteCounter <= 5){
+            spriteNum = 1;
+        }
+        if (spriteCounter > 5 && spriteCounter <=25){
+            spriteNum = 2;
+
+        }
+        if (spriteCounter > 25){
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+    }
     public void pickUpObject(int i){
         if (i != 999)
         {
@@ -148,14 +179,17 @@ public class Player extends Entity{
         }
     }
     public void interactNPC(int i) {
-        if (i != 999)
-        {
-            if(gp.keyH.enterPressed == true) {
+        if(gp.keyH.enterPressed == true) {
+            if (i != 999) {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
             }
+            else {
+                attacking =true;
+            }
         }
     }
+
     public void contactMonster(int i) {
         if(i != 999) {
 
@@ -169,39 +203,48 @@ public class Player extends Entity{
 
     public void draw(Graphics2D g2){
         BufferedImage image = null;
+        
         switch (direction){
             case "up":
-                if (spriteNum == 1){
-                    image = up1;
+                if (attacking == false){
+                    if (spriteNum == 1){image = up1;}
+                    if (spriteNum == 2){image = up2;}
                 }
-                if (spriteNum == 2){
-                    image = up2;
+                if (attacking == true){
+                    if (spriteNum == 1){image = attackUp1;}
+                    if (spriteNum == 2){image = attackUp2;}
                 }
                 break;
             case "down":
-                if (spriteNum == 1){
-                    image = down1;
+                if (attacking == false){
+                    if (spriteNum == 1){image = down1;}
+                    if (spriteNum ==2){image = down2;}
                 }
-                if (spriteNum ==2){
-                    image = down2;
+                if (attacking == true){
+                    if (spriteNum == 1){image = attackDown1;}
+                    if (spriteNum == 2){image = attackDown2;}
                 }
 
                 break;
             case "left":
-                if (spriteNum == 1){
-                    image = left1;
+                if (attacking == false){
+                    if (spriteNum == 1){image = left1;}
+                    if (spriteNum == 2){image = left2;}
                 }
-                if (spriteNum == 2){
-                    image = left2;
+                if (attacking == true){
+                    if (spriteNum == 1){image = attackLeft1;}
+                    if (spriteNum == 2){image = attackLeft2;}
                 }
 
                 break;
             case "right":
-                if (spriteNum == 1){
-                    image = right1;
+                if (attacking == false){
+                    if (spriteNum == 1){image = right1;}
+                    if (spriteNum == 2){image = right2;}
                 }
-                if (spriteNum == 2){
-                    image = right2;
+                if (attacking == true){
+                    if (spriteNum == 1){image = attackRight1;}
+                    if (spriteNum == 2){image = attackRight2;}
                 }
 
                 break;
