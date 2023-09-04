@@ -82,6 +82,7 @@ public class EventHandler {
          gp.player.WorldY = gp.titleSize*10;
      }
      public void damagePit(int col, int row, int gameState) {
+         gp.playSE(6);
          gp.gameState = gameState;
          gp.ui.currentDialogue = "You fall into a pit!";
          gp.player.life -= 1;
