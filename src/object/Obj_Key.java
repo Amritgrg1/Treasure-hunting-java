@@ -9,6 +9,7 @@ public class Obj_Key extends Entity {
         super(gp);
         name = "Key";
         down1 = setup("/objects/Key", gp.titleSize, gp.titleSize);
+        description = "[" + name + "]\nIt opens a door.";
 
     }
 }
