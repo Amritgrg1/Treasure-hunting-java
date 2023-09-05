@@ -5,10 +5,12 @@ import main.KeyHandler;
 import main.UtilityTool;
 import object.OBJ_Shield_Wood;
 import object.OBJ_Sword_Normal;
+import object.Obj_Key;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Player extends Entity{
     KeyHandler keyH;
@@ -16,6 +18,8 @@ public class Player extends Entity{
     public final int screenY;
     int standCounter = 0;
     public boolean attackCanceled = false;
+    public ArrayList<Entity> inventory = new ArrayList<>();
+    public final int maxInventorySize = 20;
 
     public Player(Gamepanel gp, KeyHandler keyH){
         super(gp);
@@ -39,6 +43,7 @@ public class Player extends Entity{
         setDefaultValues();
         getPlayerImage();
         getPlayerAttackImage();
+        setItems();
     }
     public void setDefaultValues(){
          WorldX = gp.titleSize * 23;
@@ -62,6 +67,11 @@ public class Player extends Entity{
         attack = getAttack();   //total attack value is decided by strength and weapon
         defense = getDefense();  //total defense value is decided by dexterity and shield
 
+    }
+    public void setItems() {
+        inventory.add(currentWeapon);
+        inventory.add(currentShield);
+        inventory.add(new Obj_Key(gp));
     }
     public int getAttack(){
         return attack = strength * currentWeapon.attackValue;
