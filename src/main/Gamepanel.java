@@ -4,7 +4,6 @@ import entity.Entity;
 import entity.Player;
 import org.w3c.dom.ls.LSOutput;
 import tile.TileManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
