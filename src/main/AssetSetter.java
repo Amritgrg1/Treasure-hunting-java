@@ -13,17 +13,17 @@ public class AssetSetter {
     //Obejct set
     public void setObject(){
         int i = 0;
-        gp.Obj[i] = new Obj_Key(gp);
+        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
         gp.Obj[i].WorldX = gp.titleSize*25;
         gp.Obj[i].WorldY = gp.titleSize*23;
         i++;
 
-        gp.Obj[i] = new Obj_Key(gp);
+        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
         gp.Obj[i].WorldX = gp.titleSize*21;
         gp.Obj[i].WorldY = gp.titleSize*19;
         i++;
 
-        gp.Obj[i] = new Obj_Key(gp);
+        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
         gp.Obj[i].WorldX = gp.titleSize*26;
         gp.Obj[i].WorldY = gp.titleSize*21;
         i++;
@@ -41,6 +41,16 @@ public class AssetSetter {
         gp.Obj[i] = new Obj_Potion_Red(gp);
         gp.Obj[i].WorldX = gp.titleSize*22;
         gp.Obj[i].WorldY = gp.titleSize*27;
+        i++;
+
+        gp.Obj[i] = new Obj_Heart(gp);
+        gp.Obj[i].WorldX = gp.titleSize*22;
+        gp.Obj[i].WorldY = gp.titleSize*29;
+        i++;
+
+        gp.Obj[i] = new OBJ_ManaCrystal(gp);
+        gp.Obj[i].WorldX = gp.titleSize*22;
+        gp.Obj[i].WorldY = gp.titleSize*31;
         i++;
 
     }
