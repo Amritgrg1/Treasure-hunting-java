@@ -15,6 +15,7 @@ public class IT_DryTree extends InteractiveTile{
 
         down1 = setup("/tile_interactive/drytree", gp.titleSize, gp.titleSize);
         destructible = true;
+        life = 3;
     }
     public boolean isCorrectItem(Entity entity){
         boolean isCorrectItem = false;
@@ -23,5 +24,14 @@ public class IT_DryTree extends InteractiveTile{
             isCorrectItem = true;
         }
         return isCorrectItem;
+    }
+
+    public void playSE() {
+        gp.playSE(11);
+    }
+
+    public InteractiveTile gotDestroyedForm() {
+        InteractiveTile tile = new IT_Trunk(gp, WorldX/gp.titleSize, WorldY/gp.titleSize);
+        return tile;
     }
 }
