@@ -41,6 +41,8 @@ public class Player extends Entity{
         getPlayerAttackImage();
         setItems();
     }
+
+
     public void setDefaultValues(){
          WorldX = gp.titleSize * 23;
          WorldY = gp.titleSize * 21;
@@ -366,10 +368,12 @@ public class Player extends Entity{
             gp.iTile[i].life--;
             gp.iTile[i].invincible = true;
 
+            //Generate particle
+            generateParticle(gp.iTile[i], gp.iTile[i]);
+
             if(gp.iTile[i].life == 0) {
                 gp.iTile[i] = gp.iTile[i].getDestroyedForm();
             }
-            gp.iTile[i] = gp.iTile[i].getDestroyedForm();
         }
     }
     public void checkLevelUp() {
