@@ -292,7 +292,7 @@ public class   UI {
 
     public void drawCharcaterScreen(){
         //CREATE A FRAME
-        final int frameX = gp.titleSize;
+        final int frameX = gp.titleSize*2;
         final int frameY = gp.titleSize;
         final int frameWidth = gp.titleSize*5;
         final int frameHeight = gp.titleSize*10;
@@ -397,7 +397,7 @@ public class   UI {
     public void drawInventory() {
 
         // FRAME
-        int frameX = gp.titleSize*9;
+        int frameX = gp.titleSize*12;
         int frameY = gp.titleSize;
         int frameWidth = gp.titleSize*6;
         int frameHeight = gp.titleSize*5;
