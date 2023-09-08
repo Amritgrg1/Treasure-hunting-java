@@ -3,6 +3,9 @@ package tile_interactive;
 import entity.Entity;
 import main.Gamepanel;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 public class InteractiveTile extends Entity {
 
     Gamepanel gp;
@@ -34,6 +37,21 @@ public class InteractiveTile extends Entity {
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+
+        int screenX = WorldX - gp.player.WorldX + gp.player.screenX;
+        int screenY = WorldY - gp.player.WorldY + gp.player.screenY;
+
+        if (WorldX + gp.titleSize > gp.player.WorldX - gp.player.screenX &&
+                WorldX - gp.titleSize < gp.player.WorldX + gp.player.screenX &&
+                WorldY + gp.titleSize > gp.player.WorldY - gp.player.screenY &&
+                WorldY - gp.titleSize < gp.player.WorldY + gp.player.screenY) {
+
+            g2.drawImage(down1, screenX, screenY, null);
+
         }
     }
 }
