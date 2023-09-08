@@ -3,18 +3,20 @@ package main;
 import javax.swing.*;
 
 public class Main {
+
+    public static JFrame window;
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-
+        window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+//        window.setUndecorated(true); // full screen garxa close option hatayara exit ko
         Gamepanel gamepanel = new Gamepanel();
-        frame.add(gamepanel);
-        frame.pack();
+        window.add(gamepanel);
+        window.pack();
 
-        frame.setTitle("2D Adventure");
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        window.setTitle("2D Adventure");
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
         gamepanel.setupGame();
         gamepanel.startGameThread();
     }
