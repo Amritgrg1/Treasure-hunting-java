@@ -2,7 +2,6 @@ package entity;
 
 import main.Gamepanel;
 import main.KeyHandler;
-import main.UtilityTool;
 import object.*;
 
 import javax.imageio.ImageIO;
@@ -41,6 +40,8 @@ public class Player extends Entity{
         getPlayerAttackImage();
         setItems();
     }
+
+
     public void setDefaultValues(){
          WorldX = gp.titleSize * 23;
          WorldY = gp.titleSize * 21;
@@ -61,6 +62,7 @@ public class Player extends Entity{
         exp = 0;
         nextLevelExp = 5;
         coin = 0;
+//        currentWeapon = new Obj_Axe(gp);
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
         projectile = new Obj_Fireball(gp);
@@ -358,6 +360,21 @@ public class Player extends Entity{
             }
         }
     }
+
+    public void damageInteractiveTile(int i){
+        if (i != 999 && gp.iTile[i].destructible == true && gp.iTile[i].isCorrectItem(this) == true && gp.iTile[i].invincible == false){
+            gp.iTile[i].playSE();
+            gp.iTile[i].life--;
+            gp.iTile[i].invincible = true;
+
+            //Generate Particle
+            generateParticle(gp.iTile[i], gp.iTile[i]);
+
+            if(gp.iTile[i].life == 0) {
+                gp.iTile[i] = gp.iTile[i].getDestroyedForm();
+            }
+        }
+    }
     public void checkLevelUp() {
         if(exp > nextLevelExp) {
             level++;
@@ -375,11 +392,6 @@ public class Player extends Entity{
         }
     }
 
-    public void damageInteractiveTile(int i){
-        if (i != 999 && gp.iTile[i].destructible == true && gp.iTile[i].isCorrectItem(this) == true){
-            gp.iTile[i] = null;
-        }
-    }
     public void selectItem() {
         int itemIndex = gp.ui.getItemIndexOnSlot();
         if (itemIndex < inventory.size()) {

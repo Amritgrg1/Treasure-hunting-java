@@ -8,6 +8,7 @@ import tile_interactive.InteractiveTile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,13 +16,13 @@ import java.util.Comparator;
 
 public class Gamepanel extends JPanel implements Runnable {
     // SCREEN SETTINGS
-    final int originalTileSize = 16; // 16x16
+    final int originalTileSize = 16; // 16x16 tile
     final int scale = 3;
 
     public final int titleSize = originalTileSize * scale; // 48x48 tile
-    public final int maxScreenCol = 16;
+    public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
-    public final int screenWidth = titleSize * maxScreenCol; // 768 pixel
+    public final int screenWidth = titleSize * maxScreenCol; // 960 pixel
     public final int screenHeight = titleSize * maxScreenRow; // 576 pixels
 
     // WORLD SETTINGS
@@ -29,6 +30,13 @@ public class Gamepanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
     public final int worldWidth = titleSize * maxWorldCol;
     public final int worldHeight = titleSize * maxWorldRow;
+
+    //Full Screen
+    int screenWidth2 = screenWidth;
+    int screenHeight2 = screenHeight;
+    BufferedImage tempScreen;
+    Graphics2D g2;
+    public boolean fullScreenOn = false;
 
     //FPS
     int FPS = 60;
@@ -46,13 +54,14 @@ public class Gamepanel extends JPanel implements Runnable {
     Thread gameThread;
 
 
-    //ENTITY AND OBJ
+    //ENTITY AND OBJECT
     public Player player = new Player(this,keyH);
     public Entity Obj[] = new Entity[20];
     public Entity npc[] = new Entity[10];
     public Entity monster[] = new Entity[20];
     public InteractiveTile iTile[] = new InteractiveTile[50];
     public ArrayList<Entity> projectileList = new ArrayList<>();
+    public ArrayList<Entity> particleList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
 
     //GAME STATE
@@ -62,6 +71,7 @@ public class Gamepanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int characterState = 4;
+    public final int optionsState = 5;
 
 
 
@@ -79,6 +89,22 @@ public class Gamepanel extends JPanel implements Runnable {
         aSetter.setInteractiveTile();
 //        playMusic(0);
         gameState = titleState;
+
+        tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
+        g2 = (Graphics2D)tempScreen.getGraphics();
+
+        setFullScreen();
+    }
+
+    public void setFullScreen() {
+        //Get Local Screen Device
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        gd.setFullScreenWindow(Main.window);
+
+        //Get Full Screen Width & Height
+        screenWidth2 = Main.window.getWidth();
+        screenHeight2 = Main.window.getHeight();
     }
 
     public void startGameThread(){
@@ -103,7 +129,8 @@ public class Gamepanel extends JPanel implements Runnable {
 
             if(delta>=1){
                 update();
-                repaint();
+                drawToTempScreen(); //draw everything to the buffered image
+                drawToScreen(); //draw the buffered image to the screen
                 delta--;
                 drawCount++;
             }
@@ -126,6 +153,7 @@ public class Gamepanel extends JPanel implements Runnable {
                     npc[i].update();
                 }
             }
+
             // MONSTER
             for(int i = 0; i < monster.length; i++) {
                 if(monster[i] != null) {
@@ -138,6 +166,7 @@ public class Gamepanel extends JPanel implements Runnable {
                     }
                 }
             }
+
             for(int i = 0; i < projectileList.size(); i++) {
                 if(projectileList.get(i) != null) {
                     if (projectileList.get(i).alive == true){
@@ -148,6 +177,18 @@ public class Gamepanel extends JPanel implements Runnable {
                     }
                 }
             }
+
+            for(int i = 0; i < particleList.size(); i++) {
+                if(particleList.get(i) != null) {
+                    if (particleList.get(i).alive == true){
+                        particleList.get(i).update();
+                    }
+                    if (particleList.get(i).alive == false){
+                        particleList.remove(i);
+                    }
+                }
+            }
+
             for (int i = 0; i < iTile.length; i++){
                 if (iTile[i] != null){
                     iTile[i].update();
@@ -159,10 +200,7 @@ public class Gamepanel extends JPanel implements Runnable {
         }
     }
 
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-
+    public void drawToTempScreen() {
         //DEBUG
         long drawStart = 0;
         if (keyH.checkDrawTime == true) {
@@ -212,6 +250,12 @@ public class Gamepanel extends JPanel implements Runnable {
                 }
             }
 
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+                    entityList.add(particleList.get(i));
+                }
+            }
+
             //Sort
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
@@ -241,9 +285,12 @@ public class Gamepanel extends JPanel implements Runnable {
             g2.drawString("Draw Time: " + passed, 10, 400);
             System.out.println("Draw Time: " + passed);
         }
+    }
 
-
-        g2.dispose();
+    public void drawToScreen() {
+        Graphics g = getGraphics();
+        g.drawImage(tempScreen, 0, 0, screenWidth2, screenHeight2, null);
+        g.dispose();
     }
 
     //Sound parts
