@@ -1,7 +1,6 @@
 package entity;
 
 import main.Gamepanel;
-
 import java.awt.*;
 
 public class Particle extends Entity{
