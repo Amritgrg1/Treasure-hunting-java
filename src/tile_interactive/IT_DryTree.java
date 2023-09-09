@@ -32,7 +32,7 @@ public class IT_DryTree extends InteractiveTile{
         gp.playSE(11);
     }
 
-    public InteractiveTile gotDestroyedForm() {
+    public InteractiveTile getDestroyedForm() {
         InteractiveTile tile = new IT_Trunk(gp, WorldX/gp.titleSize, WorldY/gp.titleSize);
         return tile;
     }
