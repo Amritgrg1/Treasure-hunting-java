@@ -71,7 +71,20 @@ public class Player extends Entity{
         defense = getDefense();  //total defense value is decided by dexterity and shield
 
     }
+
+    public void setDefaultPositions() {
+        WorldX = gp.titleSize * 23;
+        WorldY = gp.titleSize * 21;
+        direction = "down";
+    }
+
+    public void restoreLifeAndMana() {
+        life = maxLife;
+        mana = maxMana;
+        invincible = false;
+    }
     public void setItems() {
+        inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentShield);
         inventory.add(new Obj_Key(gp));
@@ -238,6 +251,10 @@ public class Player extends Entity{
         }
         if(mana > maxMana) {
             mana = maxMana;
+        }
+        if (life <= 0) {
+            gp.gameState = gp.gameOverState;
+            gp.playSE(12);
         }
     }
     public void attacking(){
