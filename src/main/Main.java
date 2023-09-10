@@ -10,9 +10,14 @@ Main {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-//        window.setUndecorated(true); // full screen garxa close option hatayara exit ko
         Gamepanel gamepanel = new Gamepanel();
         window.add(gamepanel);
+
+        gamepanel.config.loadConfig();
+        if (gamepanel.fullScreenOn == true) {
+            window.setUndecorated(true);
+        }
+
         window.pack();
 
         window.setTitle("2D Adventure");
