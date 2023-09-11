@@ -10,6 +10,6 @@ public class Obj_Key extends Entity {
         name = "Key";
         down1 = setup("/objects/Key", gp.titleSize, gp.titleSize);
         description = "[" + name + "]\nIt opens a door.";
-
+        price = 50;
     }
 }
