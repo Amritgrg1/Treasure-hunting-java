@@ -13,101 +13,124 @@ public class AssetSetter {
 
     //Obejct set
     public void setObject(){
+        int mapNum = 0;
         int i = 0;
-        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
-        gp.Obj[i].WorldX = gp.titleSize*25;
-        gp.Obj[i].WorldY = gp.titleSize*23;
+        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*25;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*23;
         i++;
 
-        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
-        gp.Obj[i].WorldX = gp.titleSize*21;
-        gp.Obj[i].WorldY = gp.titleSize*19;
+        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*21;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*19;
         i++;
 
-        gp.Obj[i] = new OBJ_Coin_Bronze(gp);
-        gp.Obj[i].WorldX = gp.titleSize*26;
-        gp.Obj[i].WorldY = gp.titleSize*21;
+        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*26;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*21;
         i++;
 
-        gp.Obj[i] = new Obj_Axe(gp);
-        gp.Obj[i].WorldX = gp.titleSize*33;
-        gp.Obj[i].WorldY = gp.titleSize*21;
+        gp.Obj[mapNum][i] = new Obj_Axe(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*33;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*7;
         i++;
 
-        gp.Obj[i] = new Obj_Shield_Blue(gp);
-        gp.Obj[i].WorldX = gp.titleSize*35;
-        gp.Obj[i].WorldY = gp.titleSize*21;
+        gp.Obj[mapNum][i] = new Obj_Shield_Blue(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*35;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*7;
         i++;
 
-        gp.Obj[i] = new Obj_Potion_Red(gp);
-        gp.Obj[i].WorldX = gp.titleSize*22;
-        gp.Obj[i].WorldY = gp.titleSize*27;
+        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*22;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*27;
         i++;
 
-        gp.Obj[i] = new Obj_Heart(gp);
-        gp.Obj[i].WorldX = gp.titleSize*22;
-        gp.Obj[i].WorldY = gp.titleSize*29;
+        gp.Obj[mapNum][i] = new Obj_Heart(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*22;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*29;
         i++;
 
-        gp.Obj[i] = new OBJ_ManaCrystal(gp);
-        gp.Obj[i].WorldX = gp.titleSize*22;
-        gp.Obj[i].WorldY = gp.titleSize*31;
+        gp.Obj[mapNum][i] = new OBJ_ManaCrystal(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*22;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*31;
         i++;
 
     }
     public void setNPC() {
-        gp.npc[0] = new NPC_OldMan(gp);
-        gp.npc[0].WorldX = gp.titleSize*21;
-        gp.npc[0].WorldY = gp.titleSize*21;
+        int mapNum = 0;
+        int i =0;
 
-//        gp.npc[0] = new NPC_OldMan(gp);
-//        gp.npc[0].WorldX = gp.titleSize*9;
-//        gp.npc[0].WorldY = gp.titleSize*10;
+        //MAP 0
+        gp.npc[mapNum][0] = new NPC_OldMan(gp);
+        gp.npc[mapNum][0].WorldX = gp.titleSize*21;
+        gp.npc[mapNum][0].WorldY = gp.titleSize*21;
+        i++;
+
+        //MAP 1
+        mapNum = 1;
+        gp.npc[mapNum][0] = new NPC_OldMan(gp);
+        gp.npc[mapNum][0].WorldX = gp.titleSize*12;
+        gp.npc[mapNum][0].WorldY = gp.titleSize*7;
+        i++;
     }
     public void setMonster() {
+        int mapNum = 0;
         int i = 0;
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].WorldX = gp.titleSize*21;
-        gp.monster[i].WorldY = gp.titleSize*38;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].WorldX = gp.titleSize*21;
+        gp.monster[mapNum][i].WorldY = gp.titleSize*38;
         i++;
 
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].WorldX = gp.titleSize*23;
-        gp.monster[i].WorldY = gp.titleSize*42;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].WorldX = gp.titleSize*23;
+        gp.monster[mapNum][i].WorldY = gp.titleSize*42;
         i++;
 
 
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].WorldX = gp.titleSize*24;
-        gp.monster[i].WorldY = gp.titleSize*37;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].WorldX = gp.titleSize*24;
+        gp.monster[mapNum][i].WorldY = gp.titleSize*37;
         i++;
 
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].WorldX = gp.titleSize*38;
-        gp.monster[i].WorldY = gp.titleSize*42;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].WorldX = gp.titleSize*38;
+        gp.monster[mapNum][i].WorldY = gp.titleSize*42;
         i++;
+
+//        mapNum =1;
+//        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+//        gp.monster[mapNum][i].WorldX = gp.titleSize*38;
+//        gp.monster[mapNum][i].WorldY = gp.titleSize*42;
+//        i++;
+
     }
 
 
     public void setInteractiveTile(){
+
+        int mapNum = 0;
         int i = 0;
 
-        gp.iTile[i] = new IT_DryTree(gp, 27, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 28, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 29, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 30, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 31, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 32, 12); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 33, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 27, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 28, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 29, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 30, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 31, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 32, 12); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 33, 12); i++;
 
-        gp.iTile[i] = new IT_DryTree(gp, 30, 20); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 30, 21); i++;
-        gp.iTile[i] = new IT_DryTree(gp, 30, 22); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 20, 20); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 20, 21); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 20, 22); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 22, 24); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 23, 24); i++;
-//        gp.iTile[i] = new IT_DryTree(gp, 24, 24); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 31, 21); i++;
+
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 10, 40); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 10, 41); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 11, 41); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 12, 41); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 13, 41); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 13, 40); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 14, 40); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 15, 40); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 16, 40); i++;
+        gp.iTile[mapNum][i] = new IT_DryTree(gp, 17, 40); i++;
+
     }
 }
