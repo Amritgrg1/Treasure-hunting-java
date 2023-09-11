@@ -21,6 +21,9 @@ public class TileManager {
         getTileImage();
         loadMap("/maps/worldV3.txt", 0);
         loadMap("/maps/interior01.txt", 1);
+//        loadMap("/maps/indoor01.txt", 2);
+        loadMap("/maps/dungeon01.txt", 2);
+
     }
 
     public void getTileImage(){

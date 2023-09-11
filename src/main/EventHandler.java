@@ -53,9 +53,10 @@ public class EventHandler {
         if(canTouchEvent == true){
             if (hit(0, 27, 16, "right") == true) {damagePit(gp.dialogueState);}
             else if(hit(0, 23,12,"up") == true) {healingPool(gp.dialogueState);}
-//            else if (hit(0, 10, 12, "any") == true) {teleport1(0,10,37);}
             else if (hit(0, 10, 39, "any") == true) {teleport(1,12,13);}
             else if (hit(1,12,13, "any") == true) {teleport(0, 10, 39);}
+            else if (hit(0, 12, 13, "any") == true) {teleport1(2,25,43);}
+            else if (hit(2,25,43, "any") == true) {teleport1(0, 12, 13);}
 
         }
      }
@@ -84,14 +85,15 @@ public class EventHandler {
          }
          return hit;
      }
-//     public void teleport1(int map, int col, int row) {
-//
-////         gp.gameState = gameState;
-//         gp.currentMap = map;
-//         gp.ui.currentDialogue = "Teleport!";
-//         gp.player.WorldX = gp.titleSize * col;
-//         gp.player.WorldY = gp.titleSize * row;
-//     }
+     public void teleport1(int map, int col, int row) {
+         gp.currentMap = map;
+         gp.player.WorldX = gp.titleSize * col;
+         gp.player.WorldY = gp.titleSize * row;
+         previousEventX = gp.player.WorldX;
+         previousEventY = gp.player.WorldY;
+         canTouchEvent = false;
+         gp.playSE(13);
+     }
      public void teleport(int map, int col, int row){
          gp.currentMap = map;
          gp.player.WorldX = gp.titleSize * col;
