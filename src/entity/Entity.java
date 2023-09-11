@@ -114,11 +114,11 @@ public class Entity {
     public void use(Entity entity) {}
     public void checkDrop() {}
     public void dropItem(Entity droppedItem) {
-        for (int i = 0; i < gp.Obj.length; i++) {
-            if(gp.Obj[i] == null) {
-                gp.Obj[i] = droppedItem;
-                gp.Obj[i].WorldX = WorldX; // the dead monster's WorldX
-                gp.Obj[i].WorldY = WorldY;
+        for (int i = 0; i < gp.Obj[1].length; i++) {
+            if(gp.Obj[gp.currentMap][i] == null) {
+                gp.Obj[gp.currentMap][i] = droppedItem;
+                gp.Obj[gp.currentMap][i].WorldX = WorldX; // the dead monster's WorldX
+                gp.Obj[gp.currentMap][i].WorldY = WorldY;
                 break;
             }
         }
