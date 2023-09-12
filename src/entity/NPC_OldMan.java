@@ -10,7 +10,7 @@ public class NPC_OldMan extends Entity {
         super(gp);
 
         direction = "down";
-        speed = 1;
+        speed = 2;
 
         solidArea = new Rectangle();
         solidArea.x = 8;
@@ -43,32 +43,44 @@ public class NPC_OldMan extends Entity {
     }
     public void setAction() {
 
-        actionLockCounter ++;
+        if (onPath == true){
+//            int goalCol = 12;
+//            int goalRow = 9;
+            int goalCol = (gp.player.WorldX + gp.player.solidArea.x)/gp.titleSize;
+            int goalRow = (gp.player.WorldY + gp.player.solidArea.y)/gp.titleSize;
 
-        if(actionLockCounter == 120) {
-            Random random = new Random();
-            int i = random.nextInt(100)+1; // pick up a number from 1 to 100
 
-            if(i <= 25) {
-                direction = "up";
-            }
-            if(i > 25 && i <= 50) {
-                direction = "down";
-            }
-            if(i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if(i > 75 && i <= 100) {
-                direction = "right";
-            }
+            searchPath(goalCol, goalRow);
+        }
+        else {
+            actionLockCounter ++;
 
-            actionLockCounter = 0;
+            if(actionLockCounter == 120) {
+                Random random = new Random();
+                int i = random.nextInt(100)+1; // pick up a number from 1 to 100
+
+                if(i <= 25) {
+                    direction = "up";
+                }
+                if(i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if(i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if(i > 75 && i <= 100) {
+                    direction = "right";
+                }
+
+                actionLockCounter = 0;
+            }
         }
     }
     public void speak() {
 
         // Do this character specific stuff
         super.speak();
+        onPath =true;
     }
 
 
