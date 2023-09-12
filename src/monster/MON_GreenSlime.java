@@ -17,6 +17,7 @@ public class MON_GreenSlime extends Entity {
 
         type = type_monster;
         name = "Green Slime";
+        defaultSpeed = 1;
         speed = 1;
         maxLife = 20;
         life = maxLife;
@@ -62,7 +63,7 @@ public class MON_GreenSlime extends Entity {
 //        }
     }
     public void setAction() {
-        actionLockCounter ++;
+//        actionLockCounter ++;
 
         if (onPath == true){
 
@@ -71,10 +72,18 @@ public class MON_GreenSlime extends Entity {
 
             searchPath(goalCol, goalRow);
 
-            int i = new Random().nextInt(100)+1;
-            if(i > 99 && projectile.alive == false && shotAvailableCounter == 30) {
+            int i = new Random().nextInt(200)+1;
+            if(i > 197 && projectile.alive == false && shotAvailableCounter == 30) {
                 projectile.set(WorldX, WorldY, direction, true, this);
-                gp.projectileList.add(projectile);
+//                gp.projectileList.add(projectile);
+
+                // CHECK VACANCY
+//                for (int ii = 0; ii < gp.projectile[1].length; ii++) {
+//                    if (gp.projectile[gp.currentMap][ii] == null) {
+//                        gp.projectile[gp.currentMap][ii] = projectile;
+//                        break;
+//                    }
+//                }
                 shotAvailableCounter = 0;
             }
         }

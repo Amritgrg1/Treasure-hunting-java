@@ -50,7 +50,8 @@ public class Player extends Entity{
 //        WorldX = gp.titleSize * 12;
 //        WorldY = gp.titleSize * 11;
 //        gp.currentMap = 1;
-         speed = 4;
+         defaultSpeed = 4;
+         speed = defaultSpeed;
          direction = "down";
 
          //Player status
@@ -90,7 +91,7 @@ public class Player extends Entity{
         inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentShield);
-        inventory.add(new Obj_Key(gp));
+        inventory.add(new Obj_Axe(gp));
     }
     public int getAttack(){
         attackArea = currentWeapon.attackArea;
@@ -230,8 +231,13 @@ public class Player extends Entity{
             // SUBTRACT THE COST (MANA, AMMO ETC.)
             projectile.subtractResource(this);
 
-            //Add it to list
-            gp.projectileList.add(projectile);
+            // CHECK VACANCY
+            for (int i = 0; i < gp.projectile[1].length; i++) {
+                if(gp.projectile[gp.currentMap][i] == null) {
+                    gp.projectile[gp.currentMap][i] = projectile;
+                    break;
+                }
+            }
 
             shotAvailableCounter = 0;
 
@@ -278,7 +284,7 @@ public class Player extends Entity{
             //Adjust player's worldX/Y for the attacking
             switch (direction){
                 case "up": WorldY -= attackArea.height; break;
-                case "down": WorldX += attackArea.width; break;
+                case "down": WorldY += attackArea.height; break;
                 case "left": WorldX -= attackArea.width; break;
                 case "right": WorldX += attackArea.width; break;
             }
@@ -289,10 +295,13 @@ public class Player extends Entity{
 
             //check monster collision with the updated worldX/Y and solidArea
             int mosterIndex = gp.cChecker.checkEntity(this, gp.monster);
-            damageMonster(mosterIndex, attack);
+            damageMonster(mosterIndex, attack, currentWeapon.knockBackPower);
 
             int iTileIndex = gp.cChecker.checkEntity(this, gp.iTile);
             damageInteractiveTile(iTileIndex);
+
+            int projectileIndex = gp.cChecker.checkEntity(this, gp.projectile);
+            damageProjectile(projectileIndex);
 
             WorldX = currentWorldX;
             WorldY = currentWorldY;
@@ -357,10 +366,14 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i, int attack){
+    public void damageMonster(int i, int attack, int knockBackPower){
         if (i != 999){
             if (gp.monster[gp.currentMap][i].invincible == false){
                 gp.playSE(5);
+
+                if (knockBackPower > 0) {
+                    knockBack(gp.monster[gp.currentMap][i], knockBackPower);
+                }
 
                 int damage = attack - gp.monster[gp.currentMap][i].defense;
                 if(damage < 0) {
@@ -383,6 +396,12 @@ public class Player extends Entity{
         }
     }
 
+    public void knockBack(Entity entity, int knockBackPower) {
+
+        entity.direction = direction;
+        entity.speed += knockBackPower;
+        entity.knockBack = true;
+    }
     public void damageInteractiveTile(int i){
         if (i != 999 && gp.iTile[gp.currentMap][i].destructible == true && gp.iTile[gp.currentMap][i].isCorrectItem(this) == true && gp.iTile[gp.currentMap][i].invincible == false){
             gp.iTile[gp.currentMap][i].playSE();
@@ -395,6 +414,13 @@ public class Player extends Entity{
             if(gp.iTile[gp.currentMap][i].life == 0) {
                 gp.iTile[gp.currentMap][i] = gp.iTile[gp.currentMap][i].getDestroyedForm();
             }
+        }
+    }
+    public void damageProjectile(int i) {
+        if(i != 999) {
+            Entity projectile = gp.projectile[gp.currentMap][i];
+            projectile.alive = false;
+            generateParticle(projectile,projectile);
         }
     }
     public void checkLevelUp() {
