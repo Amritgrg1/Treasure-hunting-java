@@ -92,6 +92,23 @@ public class Player extends Entity{
         inventory.add(currentWeapon);
         inventory.add(currentShield);
         inventory.add(new Obj_Axe(gp));
+        inventory.add(new Obj_Key(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
+        inventory.add(new Obj_Potion_Red(gp));
     }
     public int getAttack(){
         attackArea = currentWeapon.attackArea;
@@ -323,6 +340,13 @@ public class Player extends Entity{
                 gp.Obj[gp.currentMap][i].use(this);
                 gp.Obj[gp.currentMap][i] = null;
             }
+            // OBSTACLE
+            else if (gp.Obj[gp.currentMap][i].type == type_obstacle) {
+                if(keyH.enterPressed == true) {
+                    attackCanceled = true;
+                    gp.Obj[gp.currentMap][i].interact();
+                }
+            }
             // INVENTORY ITEMS
             else {
                 String text;
@@ -454,8 +478,9 @@ public class Player extends Entity{
                 defense = getDefense();
             }
             if (selectedItem.type == type_consumable) {
-                selectedItem.use(this);
-                inventory.remove(itemIndex);
+                if (selectedItem.use(this) == true) {
+                    inventory.remove(itemIndex);
+                }
             }
         }
     }
