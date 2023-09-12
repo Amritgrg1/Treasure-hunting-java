@@ -16,46 +16,26 @@ public class AssetSetter {
     public void setObject(){
         int mapNum = 0;
         int i = 0;
-//        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-//        gp.Obj[mapNum][i].WorldX = gp.titleSize*25;
-//        gp.Obj[mapNum][i].WorldY = gp.titleSize*23;
-//        i++;
-
-        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-        gp.Obj[mapNum][i].WorldX = gp.titleSize*21;
-        gp.Obj[mapNum][i].WorldY = gp.titleSize*19;
-        i++;
-
-        gp.Obj[mapNum][i] = new OBJ_Coin_Bronze(gp);
-        gp.Obj[mapNum][i].WorldX = gp.titleSize*26;
-        gp.Obj[mapNum][i].WorldY = gp.titleSize*21;
-        i++;
 
         gp.Obj[mapNum][i] = new Obj_Axe(gp);
         gp.Obj[mapNum][i].WorldX = gp.titleSize*33;
         gp.Obj[mapNum][i].WorldY = gp.titleSize*7;
         i++;
 
-//        gp.Obj[mapNum][i] = new Obj_Shield_Blue(gp);
-//        gp.Obj[mapNum][i].WorldX = gp.titleSize*35;
-//        gp.Obj[mapNum][i].WorldY = gp.titleSize*7;
-//        i++;
-
-        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
-        gp.Obj[mapNum][i].WorldX = gp.titleSize*30;
-        gp.Obj[mapNum][i].WorldY = gp.titleSize*11;
+        gp.Obj[mapNum][i] = new Obj_Door(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*14;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*28;
         i++;
 
-        gp.Obj[mapNum][i] = new Obj_Heart(gp);
-        gp.Obj[mapNum][i].WorldX = gp.titleSize*15;
-        gp.Obj[mapNum][i].WorldY = gp.titleSize*30;
+        gp.Obj[mapNum][i] = new Obj_Door(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*12;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*12;
         i++;
 
-        gp.Obj[mapNum][i] = new OBJ_ManaCrystal(gp);
-        gp.Obj[mapNum][i].WorldX = gp.titleSize*35;
-        gp.Obj[mapNum][i].WorldY = gp.titleSize*38;
+        gp.Obj[mapNum][i] = new Obj_Chest(gp, new Obj_Key(gp));
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*20;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*22;
         i++;
-
     }
     public void setNPC() {
         int mapNum = 0;
