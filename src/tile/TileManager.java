@@ -13,6 +13,7 @@ public class TileManager {
     Gamepanel gp;
     public Tile[] tile;
     public int mapTileNum[][][];
+    boolean drawPath = true;
 
     public TileManager(Gamepanel gp){
         this.gp = gp;
@@ -146,6 +147,17 @@ public class TileManager {
                 worldRow++;
             }
         }
+        if (drawPath == true){
+            g2.setColor(new Color(255, 0 , 0, 70));
 
+            for (int i =0; i < gp.pFinder.pathList.size(); i++){
+                int worldX = gp.pFinder.pathList.get(i).col * gp.titleSize;
+                int worldY = gp.pFinder.pathList.get(i).row * gp.titleSize;
+                int screenX = worldX - gp.player.WorldX + gp.player.screenX;
+                int screenY = worldY - gp.player.WorldY + gp.player.screenY;
+
+                g2.fillRect(screenX, screenY, gp.titleSize, gp.titleSize);
+            }
+        }
     }
 }
