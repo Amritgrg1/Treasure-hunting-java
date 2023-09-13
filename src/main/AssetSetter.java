@@ -36,6 +36,21 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldX = gp.titleSize*20;
         gp.Obj[mapNum][i].WorldY = gp.titleSize*22;
         i++;
+
+        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*21;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*20;
+        i++;
+
+        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*20;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*20;
+        i++;
+
+        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
+        gp.Obj[mapNum][i].WorldX = gp.titleSize*17;
+        gp.Obj[mapNum][i].WorldY = gp.titleSize*21;
+        i++;
     }
     public void setNPC() {
         int mapNum = 0;
