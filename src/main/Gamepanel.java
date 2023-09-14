@@ -3,6 +3,7 @@ package main;
 import ai.PathFinder;
 import entity.Entity;
 import entity.Player;
+import environment.EnvironmentManager;
 import org.w3c.dom.ls.LSOutput;
 import tile.TileManager;
 import tile_interactive.InteractiveTile;
@@ -20,11 +21,11 @@ public class Gamepanel extends JPanel implements Runnable {
     final int originalTileSize = 16; // 16x16 tile
     final int scale = 3;
 
-    public final int titleSize = originalTileSize * scale; // 48x48 tile
+    public final int tileSize = originalTileSize * scale; // 48x48 tile
     public final int maxScreenCol = 20;
     public final int maxScreenRow = 12;
-    public final int screenWidth = titleSize * maxScreenCol; // 960 pixel
-    public final int screenHeight = titleSize * maxScreenRow; // 576 pixels
+    public final int screenWidth = tileSize * maxScreenCol; // 960 pixel
+    public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     // WORLD SETTINGS
     public final int maxWorldCol = 50;
@@ -56,6 +57,7 @@ public class Gamepanel extends JPanel implements Runnable {
     public EventHandler eHandler = new EventHandler(this);
     Config config = new Config(this);
     public PathFinder pFinder = new PathFinder(this);
+    EnvironmentManager eManager = new EnvironmentManager(this);
     Thread gameThread;
 
 
@@ -96,6 +98,7 @@ public class Gamepanel extends JPanel implements Runnable {
         aSetter.setNPC();
         aSetter.setMonster();
         aSetter.setInteractiveTile();
+        eManager.setup();
 //        playMusic(0);
         gameState = titleState;
 
@@ -299,6 +302,9 @@ public class Gamepanel extends JPanel implements Runnable {
 
             //Empty Entity list
             entityList.clear();
+
+            //Environment
+            eManager.draw(g2);
 
             //UI
             ui.draw(g2);

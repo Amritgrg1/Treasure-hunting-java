@@ -12,9 +12,9 @@ public class OBJ_ManaCrystal extends Entity {
         type = type_pickupOnly;
         name = "Mana Crystal";
         value = 1;
-        down1 = setup("/objects/manacrystal_full", gp.titleSize, gp.titleSize);
-        image = setup("/objects/manacrystal_full", gp.titleSize, gp.titleSize);
-        image2 = setup("/objects/manacrystal_blank", gp.titleSize, gp.titleSize);
+        down1 = setup("/objects/manacrystal_full", gp.tileSize, gp.tileSize);
+        image = setup("/objects/manacrystal_full", gp.tileSize, gp.tileSize);
+        image2 = setup("/objects/manacrystal_blank", gp.tileSize, gp.tileSize);
     }
     public boolean use(Entity entity) {
         gp.playSE(2);

@@ -22,8 +22,8 @@ public class Player extends Entity{
 
         this.keyH = keyH;
 
-        screenX = gp.screenWidth/2 - (gp.titleSize/2);
-        screenY = gp.screenHeight/2 - (gp.titleSize/2);
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
         //Solid Area
         solidArea = new Rectangle();
@@ -43,8 +43,8 @@ public class Player extends Entity{
 
     public void setDefaultValues(){
         //Spawn in map0
-         WorldX = gp.titleSize * 23;
-         WorldY = gp.titleSize * 21;
+         WorldX = gp.tileSize * 23;
+         WorldY = gp.tileSize * 21;
 
          //Spawn to map1
 //        WorldX = gp.titleSize * 12;
@@ -77,8 +77,8 @@ public class Player extends Entity{
     }
 
     public void setDefaultPositions() {
-        WorldX = gp.titleSize * 23;
-        WorldY = gp.titleSize * 21;
+        WorldX = gp.tileSize * 23;
+        WorldY = gp.tileSize * 21;
         direction = "down";
     }
 
@@ -104,36 +104,36 @@ public class Player extends Entity{
 
     public void getPlayerImage(){
 
-        up1 = setup("/player/boy_up_1", gp.titleSize, gp.titleSize);
-        up2 = setup("/player/boy_up_2", gp.titleSize, gp.titleSize);
-        down1 = setup("/player/boy_down_1", gp.titleSize, gp.titleSize);
-        down2 = setup("/player/boy_down_2", gp.titleSize, gp.titleSize);
-        left1 = setup("/player/boy_left_1", gp.titleSize, gp.titleSize);
-        left2 = setup("/player/boy_left_2", gp.titleSize, gp.titleSize);
-        right1 = setup("/player/boy_right_1", gp.titleSize, gp.titleSize);
-        right2 = setup("/player/boy_right_2", gp.titleSize, gp.titleSize);
+        up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/player/boy_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/player/boy_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/player/boy_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/player/boy_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/player/boy_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/player/boy_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/player/boy_right_2", gp.tileSize, gp.tileSize);
     }
 
     public void getPlayerAttackImage(){
         if (currentWeapon.type == type_sword){
-            attackUp1 = setup("/player/boy_attack_up_1", gp.titleSize, gp.titleSize*2);
-            attackUp2 = setup("/player/boy_attack_up_2", gp.titleSize, gp.titleSize*2);
-            attackDown1 = setup("/player/boy_attack_down_1", gp.titleSize, gp.titleSize*2);
-            attackDown2 = setup("/player/boy_attack_down_2", gp.titleSize, gp.titleSize*2);
-            attackLeft1 = setup("/player/boy_attack_left_1", gp.titleSize*2, gp.titleSize);
-            attackLeft2 = setup("/player/boy_attack_left_2", gp.titleSize*2, gp.titleSize);
-            attackRight1 = setup("/player/boy_attack_right_1", gp.titleSize*2, gp.titleSize);
-            attackRight2 = setup("/player/boy_attack_right_2", gp.titleSize*2, gp.titleSize);
+            attackUp1 = setup("/player/boy_attack_up_1", gp.tileSize, gp.tileSize*2);
+            attackUp2 = setup("/player/boy_attack_up_2", gp.tileSize, gp.tileSize*2);
+            attackDown1 = setup("/player/boy_attack_down_1", gp.tileSize, gp.tileSize*2);
+            attackDown2 = setup("/player/boy_attack_down_2", gp.tileSize, gp.tileSize*2);
+            attackLeft1 = setup("/player/boy_attack_left_1", gp.tileSize*2, gp.tileSize);
+            attackLeft2 = setup("/player/boy_attack_left_2", gp.tileSize*2, gp.tileSize);
+            attackRight1 = setup("/player/boy_attack_right_1", gp.tileSize*2, gp.tileSize);
+            attackRight2 = setup("/player/boy_attack_right_2", gp.tileSize*2, gp.tileSize);
         }
         if (currentWeapon.type == type_axe){
-            attackUp1 = setup("/player/boy_axe_up_1", gp.titleSize, gp.titleSize*2);
-            attackUp2 = setup("/player/boy_axe_up_2", gp.titleSize, gp.titleSize*2);
-            attackDown1 = setup("/player/boy_axe_down_1", gp.titleSize, gp.titleSize*2);
-            attackDown2 = setup("/player/boy_axe_down_2", gp.titleSize, gp.titleSize*2);
-            attackLeft1 = setup("/player/boy_axe_left_1", gp.titleSize*2, gp.titleSize);
-            attackLeft2 = setup("/player/boy_axe_left_2", gp.titleSize*2, gp.titleSize);
-            attackRight1 = setup("/player/boy_axe_right_1", gp.titleSize*2, gp.titleSize);
-            attackRight2 = setup("/player/boy_axe_right_2", gp.titleSize*2, gp.titleSize);
+            attackUp1 = setup("/player/boy_axe_up_1", gp.tileSize, gp.tileSize*2);
+            attackUp2 = setup("/player/boy_axe_up_2", gp.tileSize, gp.tileSize*2);
+            attackDown1 = setup("/player/boy_axe_down_1", gp.tileSize, gp.tileSize*2);
+            attackDown2 = setup("/player/boy_axe_down_2", gp.tileSize, gp.tileSize*2);
+            attackLeft1 = setup("/player/boy_axe_left_1", gp.tileSize*2, gp.tileSize);
+            attackLeft2 = setup("/player/boy_axe_left_2", gp.tileSize*2, gp.tileSize);
+            attackRight1 = setup("/player/boy_axe_right_1", gp.tileSize*2, gp.tileSize);
+            attackRight2 = setup("/player/boy_axe_right_2", gp.tileSize*2, gp.tileSize);
         }
     }
 
@@ -520,7 +520,7 @@ public class Player extends Entity{
                     if (spriteNum == 2){image = up2;}
                 }
                 if (attacking == true){
-                    tempScreenY = screenY - gp.titleSize;
+                    tempScreenY = screenY - gp.tileSize;
                     if (spriteNum == 1){image = attackUp1;}
                     if (spriteNum == 2){image = attackUp2;}
                 }
@@ -542,7 +542,7 @@ public class Player extends Entity{
                     if (spriteNum == 2){image = left2;}
                 }
                 if (attacking == true){
-                    tempScreenX = screenX - gp.titleSize;
+                    tempScreenX = screenX - gp.tileSize;
                     if (spriteNum == 1){image = attackLeft1;}
                     if (spriteNum == 2){image = attackLeft2;}
                 }

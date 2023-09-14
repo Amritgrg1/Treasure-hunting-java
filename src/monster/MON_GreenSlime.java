@@ -36,21 +36,21 @@ public class MON_GreenSlime extends Entity {
         getImage();
     }
     public void getImage() {
-        up1 = setup("/monster/greenslime_down_1", gp.titleSize, gp.titleSize);
-        up2 = setup("/monster/greenslime_down_2", gp.titleSize, gp.titleSize);
-        down1 = setup("/monster/greenslime_down_1", gp.titleSize, gp.titleSize);
-        down2 = setup("/monster/greenslime_down_2", gp.titleSize, gp.titleSize);
-        left1 = setup("/monster/greenslime_down_1", gp.titleSize, gp.titleSize);
-        left2 = setup("/monster/greenslime_down_2", gp.titleSize, gp.titleSize);
-        right1 = setup("/monster/greenslime_down_1", gp.titleSize, gp.titleSize);
-        right2 = setup("/monster/greenslime_down_2", gp.titleSize, gp.titleSize);
+        up1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/monster/greenslime_down_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/monster/greenslime_down_2", gp.tileSize, gp.tileSize);
     }
     public void update(){
         super.update();
 
         int xDistance = Math.abs(WorldX - gp.player.WorldX);
         int yDistance = Math.abs(WorldY - gp.player.WorldY);
-        int tileDistace = (xDistance + yDistance)/gp.titleSize;
+        int tileDistace = (xDistance + yDistance)/gp.tileSize;
 
         if (onPath == false && tileDistace < 5){
             int i = new Random().nextInt(100)+1;
@@ -67,8 +67,8 @@ public class MON_GreenSlime extends Entity {
 
         if (onPath == true){
 
-            int goalCol = (gp.player.WorldX + gp.player.solidArea.x)/gp.titleSize;
-            int goalRow = (gp.player.WorldY + gp.player.solidArea.y)/gp.titleSize;
+            int goalCol = (gp.player.WorldX + gp.player.solidArea.x)/gp.tileSize;
+            int goalRow = (gp.player.WorldY + gp.player.solidArea.y)/gp.tileSize;
 
             searchPath(goalCol, goalRow);
 

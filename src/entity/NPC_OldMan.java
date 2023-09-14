@@ -25,14 +25,14 @@ public class NPC_OldMan extends Entity {
     }
     public void getImage(){
 
-        up1 = setup("/npc/oldman_up_1", gp.titleSize, gp.titleSize);
-        up2 = setup("/npc/oldman_up_2", gp.titleSize, gp.titleSize);
-        down1 = setup("/npc/oldman_down_1", gp.titleSize, gp.titleSize);
-        down2 = setup("/npc/oldman_down_2", gp.titleSize, gp.titleSize);
-        left1 = setup("/npc/oldman_left_1", gp.titleSize, gp.titleSize);
-        left2 = setup("/npc/oldman_left_2", gp.titleSize, gp.titleSize);
-        right1 = setup("/npc/oldman_right_1", gp.titleSize, gp.titleSize);
-        right2 = setup("/npc/oldman_right_2", gp.titleSize, gp.titleSize);
+        up1 = setup("/npc/oldman_up_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/npc/oldman_up_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/npc/oldman_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/oldman_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/npc/oldman_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/npc/oldman_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/npc/oldman_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/npc/oldman_right_2", gp.tileSize, gp.tileSize);
 
     }
     public void setDialogue() {
@@ -46,8 +46,8 @@ public class NPC_OldMan extends Entity {
         if (onPath == true){
 //            int goalCol = 12;
 //            int goalRow = 9;
-            int goalCol = (gp.player.WorldX + gp.player.solidArea.x)/gp.titleSize;
-            int goalRow = (gp.player.WorldY + gp.player.solidArea.y)/gp.titleSize;
+            int goalCol = (gp.player.WorldX + gp.player.solidArea.x)/gp.tileSize;
+            int goalRow = (gp.player.WorldY + gp.player.solidArea.y)/gp.tileSize;
 
 
             searchPath(goalCol, goalRow);

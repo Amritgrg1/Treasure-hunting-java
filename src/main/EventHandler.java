@@ -49,7 +49,7 @@ public class EventHandler {
          int xDistance = Math.abs(gp.player.WorldX - previousEventX);
          int yDistance = Math.abs(gp.player.WorldY - previousEventY);
          int distance = Math.max(xDistance, yDistance);
-         if(distance > gp.titleSize){
+         if(distance > gp.tileSize){
              canTouchEvent = true;
          }
 
@@ -71,8 +71,8 @@ public class EventHandler {
          if (map == gp.currentMap){
              gp.player.solidArea.x = gp.player.WorldX + gp.player.solidArea.x;
              gp.player.solidArea.y = gp.player.WorldY + gp.player.solidArea.y;
-             eventRect[map][col][row].x = col*gp.titleSize + eventRect[map][col][row].x;
-             eventRect[map][col][row].y = row*gp.titleSize + eventRect[map][col][row].y;
+             eventRect[map][col][row].x = col*gp.tileSize + eventRect[map][col][row].x;
+             eventRect[map][col][row].y = row*gp.tileSize + eventRect[map][col][row].y;
 
              if(gp.player.solidArea.intersects(eventRect[map][col][row]) && eventRect[map][col][row].eventDone == false)  {
                  if(gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {

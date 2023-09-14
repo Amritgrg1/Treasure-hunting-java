@@ -12,10 +12,10 @@ public class IT_DryTree extends InteractiveTile{
         super(gp, col, row);
         this.gp = gp;
 
-        this.WorldX = gp.titleSize * col;
-        this.WorldY = gp.titleSize * row;
+        this.WorldX = gp.tileSize * col;
+        this.WorldY = gp.tileSize * row;
 
-        down1 = setup("/tile_interactive/drytree", gp.titleSize, gp.titleSize);
+        down1 = setup("/tile_interactive/drytree", gp.tileSize, gp.tileSize);
         destructible = true;
         life = 3;
     }
@@ -33,7 +33,7 @@ public class IT_DryTree extends InteractiveTile{
     }
 
     public InteractiveTile getDestroyedForm() {
-        InteractiveTile tile = new IT_Trunk(gp, WorldX/gp.titleSize, WorldY/gp.titleSize);
+        InteractiveTile tile = new IT_Trunk(gp, WorldX/gp.tileSize, WorldY/gp.tileSize);
         return tile;
     }
 

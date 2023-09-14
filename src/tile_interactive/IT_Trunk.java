@@ -8,10 +8,10 @@ public class IT_Trunk extends InteractiveTile{
         super(gp, col, row);
         this.gp = gp;
 
-        this.WorldX = gp.titleSize * col;
-        this.WorldY = gp.titleSize * row;
+        this.WorldX = gp.tileSize * col;
+        this.WorldY = gp.tileSize * row;
 
-        down1 = setup("/tile_interactive/trunk", gp.titleSize, gp.titleSize);
+        down1 = setup("/tile_interactive/trunk", gp.tileSize, gp.tileSize);
 
         solidArea.x = 0;
         solidArea.y = 0;
