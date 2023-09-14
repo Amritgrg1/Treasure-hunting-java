@@ -11,7 +11,7 @@ public class Obj_Key extends Entity {
         this.gp = gp;
         type = type_consumable;
         name = "Key";
-        down1 = setup("/objects/Key", gp.titleSize, gp.titleSize);
+        down1 = setup("/objects/Key", gp.tileSize, gp.tileSize);
         description = "[" + name + "]\nIt opens a door.";
         price = 100;
         stackable = true;

@@ -81,7 +81,7 @@ public class TileManager {
         try{
             tile[index] = new Tile();
             tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tile/"+ imageName +".png"));
-            tile[index].image = uTool.scaleImage(tile[index].image, gp.titleSize, gp.titleSize);
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
 
 
@@ -128,15 +128,15 @@ public class TileManager {
         while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow){
             int tileNum = mapTileNum[gp.currentMap][worldCol][worldRow];
 
-            int worldX = worldCol * gp.titleSize;
-            int worldY = worldRow * gp.titleSize;
+            int worldX = worldCol * gp.tileSize;
+            int worldY = worldRow * gp.tileSize;
             int screenX = worldX - gp.player.WorldX + gp.player.screenX;
             int screenY = worldY - gp.player.WorldY + gp.player.screenY;
 
-            if(worldX + gp.titleSize > gp.player.WorldX - gp.player.screenX  &&
-               worldX - gp.titleSize < gp.player.WorldX + gp.player.screenX &&
-               worldY + gp.titleSize > gp.player.WorldY - gp.player.screenY &&
-               worldY - gp.titleSize < gp.player.WorldY + gp.player.screenY)
+            if(worldX + gp.tileSize > gp.player.WorldX - gp.player.screenX  &&
+               worldX - gp.tileSize < gp.player.WorldX + gp.player.screenX &&
+               worldY + gp.tileSize > gp.player.WorldY - gp.player.screenY &&
+               worldY - gp.tileSize < gp.player.WorldY + gp.player.screenY)
             {
                 g2.drawImage(tile[tileNum].image, screenX, screenY, null);
             }
@@ -151,12 +151,12 @@ public class TileManager {
             g2.setColor(new Color(255, 0 , 0, 70));
 
             for (int i =0; i < gp.pFinder.pathList.size(); i++){
-                int worldX = gp.pFinder.pathList.get(i).col * gp.titleSize;
-                int worldY = gp.pFinder.pathList.get(i).row * gp.titleSize;
+                int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+                int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
                 int screenX = worldX - gp.player.WorldX + gp.player.screenX;
                 int screenY = worldY - gp.player.WorldY + gp.player.screenY;
 
-                g2.fillRect(screenX, screenY, gp.titleSize, gp.titleSize);
+                g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
             }
         }
     }

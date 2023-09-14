@@ -13,8 +13,8 @@ public class Obj_Chest extends Entity {
         this.loot = loot;
         type = type_obstacle;
         name = "Chest";
-        image = setup("/objects/chest", gp.titleSize, gp.titleSize);
-        image2 = setup("/objects/chest_opened", gp.titleSize, gp.titleSize);
+        image = setup("/objects/chest", gp.tileSize, gp.tileSize);
+        image2 = setup("/objects/chest_opened", gp.tileSize, gp.tileSize);
         down1 = image;
         collision = true;
 

@@ -43,10 +43,10 @@ public class InteractiveTile extends Entity {
         int screenX = WorldX - gp.player.WorldX + gp.player.screenX;
         int screenY = WorldY - gp.player.WorldY + gp.player.screenY;
 
-        if (WorldX + gp.titleSize > gp.player.WorldX - gp.player.screenX &&
-                WorldX - gp.titleSize < gp.player.WorldX + gp.player.screenX &&
-                WorldY + gp.titleSize > gp.player.WorldY - gp.player.screenY &&
-                WorldY - gp.titleSize < gp.player.WorldY + gp.player.screenY) {
+        if (WorldX + gp.tileSize > gp.player.WorldX - gp.player.screenX &&
+                WorldX - gp.tileSize < gp.player.WorldX + gp.player.screenX &&
+                WorldY + gp.tileSize > gp.player.WorldY - gp.player.screenY &&
+                WorldY - gp.tileSize < gp.player.WorldY + gp.player.screenY) {
 
             g2.drawImage(down1, screenX, screenY, null);
 

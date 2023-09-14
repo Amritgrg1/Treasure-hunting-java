@@ -9,7 +9,7 @@ public class Obj_Axe extends Entity {
 
         type = type_axe;
         name = "Woodcutter's Axe";
-        down1 = setup("/objects/axe", gp.titleSize, gp.titleSize);
+        down1 = setup("/objects/axe", gp.tileSize, gp.tileSize);
         attackValue = 2;
         attackArea.width = 30;
         attackArea.height = 30;

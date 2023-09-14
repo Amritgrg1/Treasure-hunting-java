@@ -22,7 +22,7 @@ public class Particle extends Entity{
         this.yd = yd;
 
         life = maxLife;
-        int offset = (gp.titleSize/2) - (size/2);
+        int offset = (gp.tileSize/2) - (size/2);
         WorldX = generator.WorldX + offset;
         WorldY = generator.WorldY + offset;
     }

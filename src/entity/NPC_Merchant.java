@@ -26,14 +26,14 @@ public class NPC_Merchant extends Entity{
     }
     public void getImage(){
 
-        up1 = setup("/npc/merchant_down_1", gp.titleSize, gp.titleSize);
-        up2 = setup("/npc/merchant_down_2", gp.titleSize, gp.titleSize);
-        down1 = setup("/npc/merchant_down_1", gp.titleSize, gp.titleSize);
-        down2 = setup("/npc/merchant_down_2", gp.titleSize, gp.titleSize);
-        left1 = setup("/npc/merchant_down_1", gp.titleSize, gp.titleSize);
-        left2 = setup("/npc/merchant_down_2", gp.titleSize, gp.titleSize);
-        right1 = setup("/npc/merchant_down_1", gp.titleSize, gp.titleSize);
-        right2 = setup("/npc/merchant_down_2", gp.titleSize, gp.titleSize);
+        up1 = setup("/npc/merchant_down_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/npc/merchant_down_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/npc/merchant_down_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/npc/merchant_down_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/npc/merchant_down_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/npc/merchant_down_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/npc/merchant_down_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/npc/merchant_down_2", gp.tileSize, gp.tileSize);
 
     }
     public void setDialogue() {

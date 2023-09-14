@@ -108,10 +108,10 @@ public class Entity {
         return WorldY + solidArea.y + solidArea.height;
     }
     public int getCol() {
-        return (WorldX + solidArea.x)/gp.titleSize;
+        return (WorldX + solidArea.x)/gp.tileSize;
     }
     public int getRow() {
-        return (WorldY + solidArea.y)/gp.titleSize;
+        return (WorldY + solidArea.y)/gp.tileSize;
     }
     public void setAction() {}
     public void damageReaction(){}
@@ -286,10 +286,10 @@ public class Entity {
         int screenX = WorldX - gp.player.WorldX + gp.player.screenX;
         int screenY = WorldY - gp.player.WorldY + gp.player.screenY;
 
-        if (WorldX + gp.titleSize > gp.player.WorldX - gp.player.screenX &&
-                WorldX - gp.titleSize < gp.player.WorldX + gp.player.screenX &&
-                WorldY + gp.titleSize > gp.player.WorldY - gp.player.screenY &&
-                WorldY - gp.titleSize < gp.player.WorldY + gp.player.screenY) {
+        if (WorldX + gp.tileSize > gp.player.WorldX - gp.player.screenX &&
+                WorldX - gp.tileSize < gp.player.WorldX + gp.player.screenX &&
+                WorldY + gp.tileSize > gp.player.WorldY - gp.player.screenY &&
+                WorldY - gp.tileSize < gp.player.WorldY + gp.player.screenY) {
             switch (direction) {
                 case "up":
                     if (spriteNum == 1) {image = up1;}
@@ -311,11 +311,11 @@ public class Entity {
 
             //Monster Health Bar
             if (type == 2 && hpBarOn == true){
-                double oneScale = (double)gp.titleSize/maxLife;
+                double oneScale = (double)gp.tileSize/maxLife;
                 double hpBarValue = oneScale * life;
 
                 g2.setColor(new Color(35, 35, 35));
-                g2.fillRect(screenX - 1,screenY - 16, gp.titleSize+2, 12 );
+                g2.fillRect(screenX - 1,screenY - 16, gp.tileSize+2, 12 );
 
                 g2.setColor(new Color(255,0,30));
                 g2.fillRect(screenX,screenY - 15, (int)hpBarValue, 10 );
@@ -376,27 +376,27 @@ public class Entity {
         return image;
     }
     public void searchPath(int goalCol, int goalRow){
-        int startCol = (WorldX + solidArea.x)/gp.titleSize;
-        int startRow = (WorldY + solidArea.y)/gp.titleSize;
+        int startCol = (WorldX + solidArea.x)/gp.tileSize;
+        int startRow = (WorldY + solidArea.y)/gp.tileSize;
 
         gp.pFinder.setNode(startCol, startRow, goalCol, goalRow, this);
         if (gp.pFinder.search() == true){
             //Next WorldX & WorldY
-            int nextX = gp.pFinder.pathList.get(0).col * gp.titleSize;
-            int nextY = gp.pFinder.pathList.get(0).row * gp.titleSize;
+            int nextX = gp.pFinder.pathList.get(0).col * gp.tileSize;
+            int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
             //Entity's solidArea position
             int enLeftX = WorldX + solidArea.x;
             int enRightX = WorldX + solidArea.x + solidArea.width;
             int enTopY = WorldY + solidArea.y;
             int enBottomY = WorldY + solidArea.y + solidArea.height;
 
-            if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.titleSize){
+            if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize){
                 direction = "up";
             }
-            else if (enTopY < nextY && enLeftX <= nextX && enRightX < nextX + gp.titleSize){
+            else if (enTopY < nextY && enLeftX <= nextX && enRightX < nextX + gp.tileSize){
                 direction = "down";
             }
-            else if (enTopY >= nextY && enBottomY < nextY + gp.titleSize) {
+            else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
                 //left or right
                 if (enLeftX > nextX){
                     direction = "left";
@@ -458,8 +458,8 @@ public class Entity {
             case "left": nextWorldX = user.getLeftX()-1; break;
             case "right": nextWorldX = user.getRightX()+1; break;
         }
-        int col = nextWorldX/gp.titleSize;
-        int row =  nextWorldY/gp.titleSize;
+        int col = nextWorldX/gp.tileSize;
+        int row =  nextWorldY/gp.tileSize;
 
         for (int i = 0; i < target[1].length; i++) {
             if(target[gp.currentMap][i] != null) {
