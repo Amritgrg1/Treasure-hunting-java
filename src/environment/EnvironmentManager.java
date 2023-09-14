@@ -13,7 +13,11 @@ public class EnvironmentManager {
     }
 
     public void setup() {
-        lighting = new Lighting(gp, 300); //576(Screen size) or 300(small size)
+        lighting = new Lighting(gp);
+    }
+
+    public void update() {
+        lighting.update();
     }
 
     public void draw(Graphics2D g2) {
