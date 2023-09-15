@@ -27,6 +27,11 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
         i++;
 
+        gp.Obj[mapNum][i] = new Obj_Tent(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*19;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
+        i++;
+
         gp.Obj[mapNum][i] = new Obj_Door(gp);
         gp.Obj[mapNum][i].WorldX = gp.tileSize*14;
         gp.Obj[mapNum][i].WorldY = gp.tileSize*28;
