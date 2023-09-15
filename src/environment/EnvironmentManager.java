@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class EnvironmentManager {
     Gamepanel gp;
-    Lighting lighting;
+    public Lighting lighting;
 
     public EnvironmentManager(Gamepanel gp) {
         this.gp = gp;
