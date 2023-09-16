@@ -5,6 +5,7 @@ import entity.Entity;
 import entity.Player;
 import environment.EnvironmentManager;
 import org.w3c.dom.ls.LSOutput;
+import tile.Map;
 import tile.TileManager;
 import tile_interactive.InteractiveTile;
 
@@ -58,6 +59,7 @@ public class Gamepanel extends JPanel implements Runnable {
     Config config = new Config(this);
     public PathFinder pFinder = new PathFinder(this);
     EnvironmentManager eManager = new EnvironmentManager(this);
+    Map map = new Map(this);
     Thread gameThread;
 
 
@@ -84,6 +86,7 @@ public class Gamepanel extends JPanel implements Runnable {
     public final int transitionState = 7;
     public final int tradeState = 8;
     public final int sleepState = 9;
+    public final int mapState = 10;
 
 
 
@@ -243,6 +246,10 @@ public class Gamepanel extends JPanel implements Runnable {
         if(gameState == titleState) {
             ui.draw(g2);
         }
+        // Map Screen
+        else if (gameState == mapState) {
+            map.drawFullMapScreen(g2);
+        }
 
         //Others
         else {
@@ -307,6 +314,9 @@ public class Gamepanel extends JPanel implements Runnable {
 
             //Environment
             eManager.draw(g2);
+
+            // MINI MAP
+            map.drawMiniMap(g2);
 
             //UI
             ui.draw(g2);
