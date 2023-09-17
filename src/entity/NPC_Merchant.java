@@ -47,6 +47,7 @@ public class NPC_Merchant extends Entity{
         inventory.add(new Obj_Axe(gp));
         inventory.add(new Obj_Shield_Blue(gp));
         inventory.add(new Obj_Key(gp));
+        inventory.add(new Obj_Tent(gp));
     }
 
     public void speak(){

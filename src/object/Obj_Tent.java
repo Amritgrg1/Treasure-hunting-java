@@ -15,7 +15,7 @@ public class Obj_Tent extends Entity {
         name = "Tent";
         down1 = setup("/objects/tent", gp.tileSize, gp.tileSize);
         description = "[Tent\nYou can sleep until\nnext morning.";
-        price = 300;
+        price = 30;
         stackable = true;
     }
     public boolean use(Entity entity) {
