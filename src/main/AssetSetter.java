@@ -43,24 +43,22 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldY = gp.tileSize*12;
         i++;
 
-        gp.Obj[mapNum][i] = new Obj_Chest(gp, new Obj_Key(gp));
+        gp.Obj[mapNum][i] = new Obj_Chest(gp);
+        gp.Obj[mapNum][i].setLoot(new Obj_Key(gp));
         gp.Obj[mapNum][i].WorldX = gp.tileSize*20;
         gp.Obj[mapNum][i].WorldY = gp.tileSize*22;
         i++;
 
-        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
-        gp.Obj[mapNum][i].WorldX = gp.tileSize*21;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
-        i++;
-
-        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
-        gp.Obj[mapNum][i].WorldX = gp.tileSize*20;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
-        i++;
-
-        gp.Obj[mapNum][i] = new Obj_Potion_Red(gp);
+        gp.Obj[mapNum][i] = new Obj_Chest(gp);
+        gp.Obj[mapNum][i].setLoot(new Obj_Tent(gp));
         gp.Obj[mapNum][i].WorldX = gp.tileSize*17;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*21;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
+        i++;
+
+        gp.Obj[mapNum][i] = new Obj_Chest(gp);
+        gp.Obj[mapNum][i].setLoot(new Obj_Potion_Red(gp));
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*16;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
         i++;
     }
     public void setNPC() {

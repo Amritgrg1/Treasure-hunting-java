@@ -36,10 +36,6 @@ public class Player extends Entity{
         solidArea.height = 32;
 
         setDefaultValues();
-        getImage();
-        getAttackImage();
-        getGuardImage();
-        setItems();
     }
     public void setDefaultValues(){
         //Spawn in map0
@@ -69,23 +65,31 @@ public class Player extends Entity{
 //        currentWeapon = new Obj_Axe(gp);
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_Shield_Wood(gp);
+        currentLight = null;
         projectile = new Obj_Fireball(gp);
 //        projectile = new OBJ_Rock(gp);
         attack = getAttack();   //total attack value is decided by strength and weapon
         defense = getDefense();  //total defense value is decided by dexterity and shield
 
+        getImage();
+        getAttackImage();
+        getGuardImage();
+        setItems();
     }
     public void setDefaultPositions() {
         WorldX = gp.tileSize * 23;
         WorldY = gp.tileSize * 21;
         direction = "down";
     }
-    public void restoreLifeAndMana() {
+    public void restoreStatus() {
         life = maxLife;
         mana = maxMana;
         invincible = false;
         transparent = false;
-
+        attacking = false;
+        guarding = false;
+        knockBack = false;
+        lightUpdated = true;
     }
     public void setItems() {
         inventory.clear();
@@ -104,6 +108,24 @@ public class Player extends Entity{
     }
     public int getDefense(){
         return defense = dexterity * currentShield.defenseValue;
+    }
+    public int getCurrentWeaponSlot() {
+        int currentWeaponSlot = 0;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i) == currentWeapon) {
+                currentWeaponSlot = i;
+            }
+        }
+        return currentWeaponSlot;
+    }
+    public int getCurrentShieldSlot() {
+        int currentShieldSlot = 0;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i) == currentShield) {
+                currentShieldSlot = i;
+            }
+        }
+        return currentShieldSlot;
     }
     public void getImage(){
         up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
