@@ -3,16 +3,16 @@ package object;
 import entity.Entity;
 import main.Gamepanel;
 
-public class Obj_Door extends Entity {
+public class OBJ_Door_Iron extends Entity {
     Gamepanel gp;
-    public  static final String objName = "Door";
+    public  static final String objName = "Iron Door";
 
-    public Obj_Door(Gamepanel gp){
+    public OBJ_Door_Iron(Gamepanel gp){
         super(gp);
         this.gp = gp;
         type = type_obstacle;
         name = "Door";
-        down1 = setup("/objects/door", gp.tileSize, gp.tileSize);
+        down1 = setup("/objects/door_iron", gp.tileSize, gp.tileSize);
         collision = true;
 
         solidArea.x = 0;
@@ -24,7 +24,7 @@ public class Obj_Door extends Entity {
         setDialogue();
     }
     public void  setDialogue() {
-        dialogues[0][0] = "You need a key to open this";
+        dialogues[0][0] = "It won't budge.";
     }
     public void interact() {
         startDialogue(this,0);
