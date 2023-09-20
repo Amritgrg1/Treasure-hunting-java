@@ -19,8 +19,6 @@ public class   UI {
     public Font maruMonica, purisaB;
     BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank, coin;
     public boolean messageOn = false;
-//    public String message = "";
-//    int messageCounter = 0;
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
     public boolean gameFinished = false;
@@ -34,6 +32,8 @@ public class   UI {
     int substate = 0;
     int counter = 0;
     public Entity npc;
+    int charIndex = 0;
+    String combinedText = "";
 
 
     public UI(Gamepanel gp){
@@ -306,6 +306,36 @@ public class   UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
         x += gp.tileSize;
         y += gp.tileSize;
+
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
+            //currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+
+            char characters[]= npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            if (charIndex < characters.length) {
+                gp.playSE(17);
+                String s = String.valueOf(characters[charIndex]);
+                combinedText = combinedText + s;
+                currentDialogue = combinedText;
+                charIndex++;
+            }
+
+            if (gp.keyH.enterPressed == true){
+
+                charIndex = 0;
+                combinedText = "";
+
+                if (gp.gameState == gp.dialogueState) {
+                    npc.dialogueIndex++;
+                    gp.keyH.enterPressed = false;
+                }
+            }
+        } else { //If no text is in the array
+            npc.dialogueIndex = 0;
+
+            if (gp.gameState == gp.dialogueState) {
+                gp.gameState = gp.playState;
+            }
+        }
 
         for(String line : currentDialogue.split("\n")) {
             g2.drawString(line, x, y);
@@ -805,6 +835,7 @@ public class   UI {
         gp.keyH.enterPressed = false;
     }
     public void trade_select(){
+        npc.dialogueSet = 0;
         drawDialogueScreen();
 
         //DRAW WINDOW
@@ -840,8 +871,7 @@ public class   UI {
             g2.drawString(">", x-24, y);
             if (gp.keyH.enterPressed == true){
                 commandNum = 0;
-                gp.gameState = gp.dialogueState;
-                currentDialogue = "Come Again!!, HeHeHeHe";
+                npc.startDialogue(npc,1);
             }
         }
     }
@@ -887,9 +917,7 @@ public class   UI {
             if (gp.keyH.enterPressed == true){
                 if (npc.inventory.get(itemIndex).price > gp.player.coin){
                     substate = 0;
-                    gp.gameState = gp.dialogueState;
-                    currentDialogue ="Not enough coins!!";
-                    drawDialogueScreen();
+                    npc.startDialogue(npc,2);
                 }
                 else {
                     if (gp.player.canObtainItem(npc.inventory.get(itemIndex)) == true) {
@@ -897,8 +925,7 @@ public class   UI {
                     }
                     else {
                         substate = 0;
-                        gp.gameState = gp.dialogueState;
-                        currentDialogue = "Your bag is full!!";
+                        npc.startDialogue(npc,3);
                     }
                 }
             }
@@ -949,8 +976,7 @@ public class   UI {
                 if (gp.player.inventory.get(itemIndex) == gp.player.currentWeapon || gp.player.inventory.get(itemIndex) == gp.player.currentShield){
                     commandNum =0;
                     substate = 0;
-                    gp.gameState = gp.dialogueState;
-                    currentDialogue = "You cannot sell this item!!";
+                    npc.startDialogue(npc,4);
                 }
                 else {
                     if (gp.player.inventory.get(itemIndex).amount > 1) {
