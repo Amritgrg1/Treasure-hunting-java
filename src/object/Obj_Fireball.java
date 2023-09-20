@@ -7,12 +7,13 @@ import main.Gamepanel;
 import java.awt.*;
 
 public class Obj_Fireball extends Projectile {
+    public  static final String objName = "Fireball";
     Gamepanel gp;
     public Obj_Fireball(Gamepanel gp) {
         super(gp);
         this.gp = gp;
 
-        name = "Fireball";
+        name = objName;
         speed = 5;
         maxLife = 80;
         life = maxLife;

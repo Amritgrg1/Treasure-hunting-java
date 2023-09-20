@@ -4,13 +4,14 @@ import entity.Entity;
 import main.Gamepanel;
 
 public class Obj_Key extends Entity {
+    public  static final String objName = "Key";
     Gamepanel gp;
 
     public Obj_Key(Gamepanel gp){
         super(gp);
         this.gp = gp;
         type = type_consumable;
-        name = "Key";
+        name = objName;
         down1 = setup("/objects/Key", gp.tileSize, gp.tileSize);
         description = "[" + name + "]\nIt opens a door.";
         price = 100;

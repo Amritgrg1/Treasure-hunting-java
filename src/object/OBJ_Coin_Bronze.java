@@ -4,6 +4,7 @@ import entity.Entity;
 import main.Gamepanel;
 
 public class OBJ_Coin_Bronze extends Entity {
+    public  static final String objName = "Bronze Coin";
     Gamepanel gp;
     public OBJ_Coin_Bronze(Gamepanel gp) {
         super(gp);
