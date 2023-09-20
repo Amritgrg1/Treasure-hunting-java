@@ -4,12 +4,13 @@ import entity.Entity;
 import main.Gamepanel;
 
 public class Obj_Chest extends Entity {
+    public  static final String objName = "Chest";
     Gamepanel gp;
     public Obj_Chest(Gamepanel gp){
         super(gp);
         this.gp = gp;
         type = type_obstacle;
-        name = "Chest";
+        name = objName;
         image = setup("/objects/chest", gp.tileSize, gp.tileSize);
         image2 = setup("/objects/chest_opened", gp.tileSize, gp.tileSize);
         down1 = image;

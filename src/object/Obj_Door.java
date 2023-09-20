@@ -4,6 +4,7 @@ import entity.Entity;
 import main.Gamepanel;
 
 public class Obj_Door extends Entity {
+    public  static final String objName = "";
     Gamepanel gp;
     public Obj_Door(Gamepanel gp){
         super(gp);
