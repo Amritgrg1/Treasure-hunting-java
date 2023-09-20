@@ -23,6 +23,8 @@ public class TileManager {
         loadMap("/maps/worldV3.txt", 0);
         loadMap("/maps/interior01.txt", 1);
         loadMap("/maps/dungeon01.txt", 2);
+        loadMap("/maps/dungeon02.txt", 3);
+
 
     }
 
