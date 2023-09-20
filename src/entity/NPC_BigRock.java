@@ -91,7 +91,7 @@ public class NPC_BigRock extends Entity{
             }
         }
 
-        int count =0;
+        int count = 0;
         //Scan plate list
         for (int i = 0; i < plateList.size(); i++){
             int xDistance = Math.abs(WorldX - plateList.get(i).WorldX);
@@ -107,7 +107,6 @@ public class NPC_BigRock extends Entity{
             else {
                 if (linkedEntity == plateList.get(i)){
                     linkedEntity = null;
-
                 }
             }
         }
@@ -121,7 +120,7 @@ public class NPC_BigRock extends Entity{
         //If all the rocks are on the plates, the iron door opens
         if (count == rockList.size()){
             for (int i = 0; i < gp.Obj[1].length; i++){
-                if (gp.Obj[gp.currentMap][i] != null && gp.Obj[gp.currentMap][i].name.equals(OBJ_Door_Iron.objName)){
+                if (gp.Obj[gp.currentMap][i] != null && gp.Obj[gp.currentMap][i].name!= null && gp.Obj[gp.currentMap][i].name.equals(OBJ_Door_Iron.objName)){
                     gp.Obj[gp.currentMap][i] = null;
                     gp.playSE(21);
                 }

@@ -49,7 +49,7 @@ public class Player extends Entity{
 
         //Spawn to map2
 //          WorldX = gp.tileSize * 9;
-//          WorldY = gp.tileSize * 41;
+//          WorldY = gp.tileSize * 39;
 //          gp.currentMap = 2;
 
 
@@ -112,7 +112,7 @@ public class Player extends Entity{
         inventory.add(new Obj_Key(gp));
 
         inventory.add(new Obj_Axe(gp));
-//        inventory.add(new OBJ_Pickaxe(gp));
+        inventory.add(new OBJ_Pickaxe(gp));
 //        inventory.add(new Obj_Lantern(gp));
     }
     public int getAttack(){
