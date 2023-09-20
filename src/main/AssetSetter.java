@@ -4,6 +4,7 @@ import entity.NPC_Merchant;
 import entity.NPC_OldMan;
 import monster.MON_GreenSlime;
 import monster.MON_Orc;
+import monster.MON_RedSlime;
 import object.*;
 import tile_interactive.IT_DryTree;
 
@@ -93,13 +94,13 @@ public class AssetSetter {
 //        i++;
 
 
-        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i] = new MON_RedSlime(gp);
         gp.monster[mapNum][i].WorldX = gp.tileSize*38;
         gp.monster[mapNum][i].WorldY = gp.tileSize*7;
         i++;
 
-        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
-        gp.monster[mapNum][i].WorldX = gp.tileSize*38;
+        gp.monster[mapNum][i] = new MON_RedSlime(gp);
+        gp.monster[mapNum][i].WorldX = gp.tileSize*36;
         gp.monster[mapNum][i].WorldY = gp.tileSize*42;
         i++;
 
