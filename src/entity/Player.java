@@ -52,6 +52,11 @@ public class Player extends Entity{
 //          WorldY = gp.tileSize * 39;
 //          gp.currentMap = 2;
 
+        // Dungeon B2
+//            WorldX = gp.tileSize * 25;
+//            WorldY = gp.tileSize * 29;
+//            gp.currentMap = 3;
+
 
          defaultSpeed = 4;
          speed = defaultSpeed;
@@ -64,7 +69,7 @@ public class Player extends Entity{
         maxMana = 6;
         mana = maxMana;
         ammo = 10;
-        strength = 1;  //more strength more damage
+        strength = 5;  //more strength more damage
         dexterity = 1; //more dexterity less damage taken
         exp = 0;
         nextLevelExp = 5;
@@ -85,6 +90,8 @@ public class Player extends Entity{
         setDialogue();
     }
     public void setDefaultPositions() {
+
+        gp.currentMap = 0;
         WorldX = gp.tileSize * 23;
         WorldY = gp.tileSize * 21;
         direction = "down";
@@ -364,11 +371,13 @@ public class Player extends Entity{
         if(mana > maxMana) {
             mana = maxMana;
         }
-        if (life <= 0) {
-            gp.gameState = gp.gameOverState;
-            gp.ui.commandNum = -1;
-            gp.stopMusic();
-            gp.playSE(12);
+        if (keyH.godModeOn == false) {
+            if (life <= 0) {
+                gp.gameState = gp.gameOverState;
+                gp.ui.commandNum = -1;
+                gp.stopMusic();
+                gp.playSE(12);
+            }
         }
     }
     public void pickUpObject(int i){

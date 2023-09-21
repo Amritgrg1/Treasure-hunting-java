@@ -114,7 +114,7 @@ public class SaveLoad {
                         gp.Obj[mapNum][i].WorldX = ds.mapObjectWorldX[mapNum][i];
                         gp.Obj[mapNum][i].WorldY = ds.mapObjectWorldY[mapNum][i];
                         if (ds.mapObjectLootNames[mapNum][i] != null) {
-                            gp.Obj[mapNum][i].loot = gp.eGenerator.getObject(ds.mapObjectLootNames[mapNum][i]);
+                            gp.Obj[mapNum][i].setLoot(gp.eGenerator.getObject(ds.mapObjectLootNames[mapNum][i]));
                         }
                         gp.Obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];
                         if (gp.Obj[mapNum][i].opened == true) {
