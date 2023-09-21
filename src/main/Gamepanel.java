@@ -125,6 +125,8 @@ public class Gamepanel extends JPanel implements Runnable {
         }
     }
     public void resetGame(boolean restart) {
+
+        currentArea = outside;
         player.setDefaultPositions();
         player.restoreStatus();
         player.resetCounter();
@@ -331,13 +333,35 @@ public class Gamepanel extends JPanel implements Runnable {
         }
 
         //DEBUG
-        if (keyH.checkDrawTime){
+//        if (keyH.checkDrawTime){
+//            long drawEnd = System.nanoTime();
+//            long passed = drawEnd - drawStart;
+//            g2.setColor(Color.white);
+//            g2.drawString("Draw Time: " + passed, 10, 400);
+//            System.out.println("Draw Time: " + passed);
+//        }
+        if (keyH.showDebugText == true) {
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
+
+            g2.setFont(new Font("Arial", Font.PLAIN, 20));
             g2.setColor(Color.white);
-            g2.drawString("Draw Time: " + passed, 10, 400);
-            System.out.println("Draw Time: " + passed);
+            int x = 10;
+            int y = 400;
+            int lineHeight = 20;
+
+            g2.drawString("WorldX: " + player.WorldX, x, y); y += lineHeight;
+            g2.drawString("WorldY: " + player.WorldY, x, y); y += lineHeight;
+            g2.drawString("Col: " + (player.WorldX + player.solidArea.x)/tileSize, x, y); y += lineHeight;
+            g2.drawString("Row: " + (player.WorldY + player.solidArea.y)/tileSize, x, y); y += lineHeight;
+            g2.drawString("Draw TIme: " + passed, x, y); y += lineHeight;
+            g2.drawString("God Mode: " + keyH.godModeOn, x, y);
         }
+
+
+        // Get the tile num
+//        int playerTileNum = tileM.mapTileNum[currentMap][player.getCol()][player.getRow()];
+//        g2.drawString("Player is on" + playerTileNum + " tile", x, y);
     }
 
     public void drawToScreen() {

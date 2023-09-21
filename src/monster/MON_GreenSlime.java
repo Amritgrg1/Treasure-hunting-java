@@ -18,7 +18,7 @@ public class MON_GreenSlime extends Entity {
         type = type_monster;
         name = "Green Slime";
         defaultSpeed = 1;
-        speed = 1;
+        speed = defaultSpeed;
         maxLife = 4;
         life = maxLife;
         attack = 5;
@@ -58,7 +58,7 @@ public class MON_GreenSlime extends Entity {
             //Check if it starts chasing
             checkStartChasingOrNot(gp.player, 5, 100);
             //Get a random direction
-            getRandomDirection();
+            getRandomDirection(120);
         }
     }
 
