@@ -131,6 +131,7 @@ public class Gamepanel extends JPanel implements Runnable {
     }
     public void resetGame(boolean restart) {
 
+        stopMusic();
         currentArea = outside;
         removeTempEntity();
         bossBattleOn = false;
