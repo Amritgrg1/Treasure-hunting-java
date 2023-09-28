@@ -103,10 +103,18 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldY = gp.tileSize*15;
         i++;
 
-//        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
-//        gp.Obj[mapNum][i].WorldX = gp.tileSize*18;
-//        gp.Obj[mapNum][i].WorldY = gp.tileSize*23;
-//        i++;
+        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*18;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*23;
+        i++;
+
+        mapNum = 3;
+        i = 0;
+        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*25;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*15;
+        i++;
+
     }
     public void setNPC() {
         int mapNum = 0;
