@@ -1,5 +1,6 @@
 package main;
 
+import data.Progress;
 import entity.NPC_BigRock;
 import entity.NPC_Merchant;
 import entity.NPC_OldMan;
@@ -115,6 +116,11 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldY = gp.tileSize*15;
         i++;
 
+        gp.Obj[mapNum][i] = new OBJ_BlueHeart(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*25;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*8;
+        i++;
+
     }
     public void setNPC() {
         int mapNum = 0;
@@ -206,14 +212,14 @@ public class AssetSetter {
 
         mapNum = 3;
         i++;
-        gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
-        gp.monster[mapNum][i].WorldX = gp.tileSize*23;
-        gp.monster[mapNum][i].WorldY = gp.tileSize*16;
-        i++;
 
-
+        if (Progress.skeletonLordDefeated == false) {
+            gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
+            gp.monster[mapNum][i].WorldX = gp.tileSize*23;
+            gp.monster[mapNum][i].WorldY = gp.tileSize*16;
+            i++;
+        }
     }
-
 
     public void setInteractiveTile(){
 

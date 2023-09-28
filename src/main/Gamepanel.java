@@ -131,6 +131,7 @@ public class Gamepanel extends JPanel implements Runnable {
     }
     public void resetGame(boolean restart) {
 
+        stopMusic();
         currentArea = outside;
         removeTempEntity();
         bossBattleOn = false;
@@ -415,7 +416,7 @@ public class Gamepanel extends JPanel implements Runnable {
 
     public void removeTempEntity() {
         for (int mapNum = 0; mapNum < maxMap; mapNum++) {
-            for (int i =0; i < Obj[i].length; i++) {
+            for (int i =0; i < Obj[1].length; i++) {
                 if (Obj[mapNum][i] != null && Obj[mapNum][i].temp == true) {
                     Obj[mapNum][i] = null;
                 }
