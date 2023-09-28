@@ -43,7 +43,7 @@ public class CutsceneManager {
                 }
             }
             // Search a vacant slot for Dummy
-            for (int i = 0; i < gp.npc[i].length; i++) {
+            for (int i = 0; i < gp.npc[1].length; i++) {
                 if (gp.npc[gp.currentMap][i] == null) {
                     gp.npc[gp.currentMap][i] = new PlayerDummy(gp);
                     gp.npc[gp.currentMap][i].WorldX = gp.player.WorldX;
@@ -57,16 +57,16 @@ public class CutsceneManager {
             scenePhase++;
         }
         if (scenePhase == 1) {
-            gp.player.WorldX -= 2;
+            gp.player.WorldY -= 2;
 
-            if (gp.player.WorldX < gp.tileSize * 16) {
+            if (gp.player.WorldY < gp.tileSize * 16) {
                 scenePhase++;
             }
         }
 
         if (scenePhase == 2) {
             //Search the BOSS
-            for (int i = 0; i < gp.monster[i].length; i++) {
+            for (int i = 0; i < gp.monster[1].length; i++) {
                 if (gp.monster[gp.currentMap][i] != null && gp.monster[gp.currentMap][i].name == MON_SkeletonLord.monName) {
                     gp.monster[gp.currentMap][i].sleep = false;
                     gp.ui.npc = gp.monster[gp.currentMap][i];
@@ -85,7 +85,7 @@ public class CutsceneManager {
             //Return to the player
 
             //Search thr Dummy
-            for (int i = 0; i < gp.npc[i].length; i++) {
+            for (int i = 0; i < gp.npc[1].length; i++) {
                 if (gp.npc[gp.currentMap][i] != null && gp.npc[gp.currentMap][i].name.equals(PlayerDummy.npcName)) {
                     //Restore the player position
                     gp.player.WorldX = gp.npc[gp.currentMap][i].WorldX;

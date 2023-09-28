@@ -39,8 +39,8 @@ public class Player extends Entity{
     }
     public void setDefaultValues(){
         //Spawn in map0
-         WorldX = gp.tileSize * 23;
-         WorldY = gp.tileSize * 21;
+//         WorldX = gp.tileSize * 23;
+//         WorldY = gp.tileSize * 21;
 
          //Spawn to map1
 //        WorldX = gp.tileSize * 12;
@@ -52,10 +52,10 @@ public class Player extends Entity{
 //          WorldY = gp.tileSize * 39;
 //          gp.currentMap = 2;
 
-        // Dungeon B2
-//            WorldX = gp.tileSize * 25;
-//            WorldY = gp.tileSize * 29;
-//            gp.currentMap = 3;
+//         Dungeon B2
+            WorldX = gp.tileSize * 25;
+            WorldY = gp.tileSize * 29;
+            gp.currentMap = 3;
 
 
          defaultSpeed = 4;
