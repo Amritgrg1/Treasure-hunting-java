@@ -1,5 +1,6 @@
 package main;
 
+import data.Progress;
 import entity.NPC_BigRock;
 import entity.NPC_Merchant;
 import entity.NPC_OldMan;
@@ -26,13 +27,13 @@ public class AssetSetter {
         i++;
 
         gp.Obj[mapNum][i] = new Obj_Lantern(gp);
-        gp.Obj[mapNum][i].WorldX = gp.tileSize*18;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*20;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*7;
         i++;
 
         gp.Obj[mapNum][i] = new Obj_Tent(gp);
-        gp.Obj[mapNum][i].WorldX = gp.tileSize*19;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*20;
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*39;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*42;
         i++;
 
         gp.Obj[mapNum][i] = new Obj_Door(gp);
@@ -45,11 +46,11 @@ public class AssetSetter {
         gp.Obj[mapNum][i].WorldY = gp.tileSize*12;
         i++;
 
-        gp.Obj[mapNum][i] = new Obj_Chest(gp);
-        gp.Obj[mapNum][i].setLoot(new Obj_Key(gp));
-        gp.Obj[mapNum][i].WorldX = gp.tileSize*20;
-        gp.Obj[mapNum][i].WorldY = gp.tileSize*22;
-        i++;
+//        gp.Obj[mapNum][i] = new Obj_Chest(gp);
+//        gp.Obj[mapNum][i].setLoot(new Obj_Key(gp));
+//        gp.Obj[mapNum][i].WorldX = gp.tileSize*20;
+//        gp.Obj[mapNum][i].WorldY = gp.tileSize*22;
+//        i++;
 
         gp.Obj[mapNum][i] = new Obj_Chest(gp);
         gp.Obj[mapNum][i].setLoot(new Obj_Tent(gp));
@@ -58,7 +59,7 @@ public class AssetSetter {
         i++;
 
         gp.Obj[mapNum][i] = new Obj_Chest(gp);
-        gp.Obj[mapNum][i].setLoot(new Obj_Potion_Red(gp));
+        gp.Obj[mapNum][i].setLoot(new Obj_Key(gp));
         gp.Obj[mapNum][i].WorldX = gp.tileSize*30;
         gp.Obj[mapNum][i].WorldY = gp.tileSize*37;
         i++;
@@ -98,15 +99,28 @@ public class AssetSetter {
         i++;
 
         gp.Obj[mapNum][i] = new Obj_Chest(gp);
-        gp.Obj[mapNum][i].setLoot(new Obj_Potion_Red(gp));
+        gp.Obj[mapNum][i].setLoot(new Obj_Boots(gp));
         gp.Obj[mapNum][i].WorldX = gp.tileSize*27;
         gp.Obj[mapNum][i].WorldY = gp.tileSize*15;
         i++;
 
-//        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
-//        gp.Obj[mapNum][i].WorldX = gp.tileSize*18;
-//        gp.Obj[mapNum][i].WorldY = gp.tileSize*23;
-//        i++;
+        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*18;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*23;
+        i++;
+
+        mapNum = 3;
+        i = 0;
+        gp.Obj[mapNum][i] = new OBJ_Door_Iron(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*25;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*15;
+        i++;
+
+        gp.Obj[mapNum][i] = new OBJ_BlueHeart(gp);
+        gp.Obj[mapNum][i].WorldX = gp.tileSize*25;
+        gp.Obj[mapNum][i].WorldY = gp.tileSize*8;
+        i++;
+
     }
     public void setNPC() {
         int mapNum = 0;
@@ -198,14 +212,14 @@ public class AssetSetter {
 
         mapNum = 3;
         i++;
-        gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
-        gp.monster[mapNum][i].WorldX = gp.tileSize*23;
-        gp.monster[mapNum][i].WorldY = gp.tileSize*16;
-        i++;
 
-
+        if (Progress.skeletonLordDefeated == false) {
+            gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
+            gp.monster[mapNum][i].WorldX = gp.tileSize*23;
+            gp.monster[mapNum][i].WorldY = gp.tileSize*16;
+            i++;
+        }
     }
-
 
     public void setInteractiveTile(){
 

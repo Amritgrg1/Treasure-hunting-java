@@ -52,7 +52,7 @@ public class Player extends Entity{
 //          WorldY = gp.tileSize * 39;
 //          gp.currentMap = 2;
 
-        // Dungeon B2
+//         Dungeon B2
 //            WorldX = gp.tileSize * 25;
 //            WorldY = gp.tileSize * 29;
 //            gp.currentMap = 3;
@@ -69,7 +69,7 @@ public class Player extends Entity{
         maxMana = 6;
         mana = maxMana;
         ammo = 10;
-        strength = 5;  //more strength more damage
+        strength = 3;  //more strength more damage
         dexterity = 1; //more dexterity less damage taken
         exp = 0;
         nextLevelExp = 5;
@@ -641,7 +641,9 @@ public class Player extends Entity{
         if(transparent == true) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.4f));
         }
-        g2.drawImage(image, tempScreenX, tempScreenY,null);
+        if (drawing == true) {
+            g2.drawImage(image, tempScreenX, tempScreenY,null);
+        }
 
         // Reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));

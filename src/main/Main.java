@@ -9,6 +9,8 @@ public class Main {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
+        new Main().setIcon();
+
         Gamepanel gamepanel = new Gamepanel();
         window.add(gamepanel);
 
@@ -19,12 +21,16 @@ public class Main {
 
         window.pack();
 
-        window.setTitle("2D Adventure");
+        window.setTitle("Blue Boy Adventure");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
         gamepanel.setupGame();
         gamepanel.startGameThread();
     }
+
+    public void setIcon() {
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("player/boy_down_1.png"));
+        window.setIconImage(icon.getImage());
+    }
 }
 
-//testing

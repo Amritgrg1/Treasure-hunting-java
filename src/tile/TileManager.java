@@ -15,7 +15,7 @@ public class TileManager {
     Gamepanel gp;
     public Tile[] tile;
     public int mapTileNum[][][];
-    boolean drawPath = true;
+//    boolean drawPath = true;
     ArrayList<String> fileNames = new ArrayList<>();
     ArrayList<String> collisionStatus = new ArrayList<>();
 
@@ -158,17 +158,17 @@ public class TileManager {
                 worldRow++;
             }
         }
-        if (drawPath == true){
-            g2.setColor(new Color(255, 0 , 0, 70));
-
-            for (int i =0; i < gp.pFinder.pathList.size(); i++){
-                int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
-                int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
-                int screenX = worldX - gp.player.WorldX + gp.player.screenX;
-                int screenY = worldY - gp.player.WorldY + gp.player.screenY;
-
-                g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
-            }
-        }
+//        if (drawPath == true){
+//            g2.setColor(new Color(255, 0 , 0, 70));
+//
+//            for (int i =0; i < gp.pFinder.pathList.size(); i++){
+//                int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
+//                int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+//                int screenX = worldX - gp.player.WorldX + gp.player.screenX;
+//                int screenY = worldY - gp.player.WorldY + gp.player.screenY;
+//
+//                g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
+//            }
+//        }
     }
 }
